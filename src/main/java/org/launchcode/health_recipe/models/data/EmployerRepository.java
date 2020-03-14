@@ -1,6 +1,6 @@
-package org.launchcode.javawebdevtechjobspersistent.models.data;
+package org.launchcode.health_recipe.models.data;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
+import org.launchcode.health_recipe.models.Employer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

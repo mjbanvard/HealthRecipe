@@ -1,7 +1,7 @@
-package org.launchcode.javawebdevtechjobspersistent.controllers;
+package org.launchcode.health_recipe.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Skill;
-import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
+import org.launchcode.health_recipe.models.Skill;
+import org.launchcode.health_recipe.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

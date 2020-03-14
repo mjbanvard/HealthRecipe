@@ -1,13 +1,13 @@
-package org.launchcode.javawebdevtechjobspersistent;
+package org.launchcode.health_recipe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaWebDevTechjobsPersistentApplication {
+public class Health_RecipeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavaWebDevTechjobsPersistentApplication.class, args);
+		SpringApplication.run(Health_RecipeApplication.class, args);
 	}
 
 }

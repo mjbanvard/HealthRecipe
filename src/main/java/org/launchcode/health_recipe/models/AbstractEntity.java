@@ -1,4 +1,4 @@
-//package org.launchcode.javawebdevtechjobspersistent.models;
+//package org.launchcode.health_recipe.models;
 //
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
@@ -50,7 +50,7 @@
 //
 //}
 
-package org.launchcode.javawebdevtechjobspersistent.models;
+package org.launchcode.health_recipe.models;
 
 
 
@@ -59,7 +59,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 import java.util.Objects;
 
 @MappedSuperclass

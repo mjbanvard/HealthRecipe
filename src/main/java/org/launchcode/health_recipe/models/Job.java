@@ -1,4 +1,4 @@
-package org.launchcode.javawebdevtechjobspersistent.models;
+package org.launchcode.health_recipe.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
