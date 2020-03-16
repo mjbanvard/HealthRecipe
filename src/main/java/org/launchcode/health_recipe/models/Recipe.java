@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Recipe extends AbstractEntity {
     @NotNull (message = "Serve time?")
     private String serve_time;
 
+    @Size(max = 20000, message = "Steps cannot exceed 20000 characters.")
     @NotNull (message = "Recipe steps?")
     private String steps;
 
