@@ -17,38 +17,38 @@ public class Recipe extends AbstractEntity {
 //      Start to Finish Time
 //      Steps
 
-//    @OneToMany
-    @NotNull(message = "Recipe name cannot be empty.")
-    private String recipe_name;
+//   @OneToMany
+//    @NotNull(message = "Recipe name cannot be empty.")
+//    private String recipe_name;
 
     @NotNull (message = "Servings?")
-    private int servings;
+    private String servings;
 
     @NotNull (message = "Serve time?")
-    private int serve_time;
+    private String serve_time;
 
     @NotNull (message = "Recipe steps?")
     private String steps;
 
     public Recipe() {}
 
-    public Recipe(String recipeName, int servings, int timeToServe, String stepsToRecipe) {
+    public Recipe(String servings, String timeToServe, String stepsToRecipe) {
         super();
-        this.recipe_name = recipeName;
+//        this.recipe_name = recipeName;
         this.servings = servings;
         this.serve_time = timeToServe;
         this.steps = stepsToRecipe;
     }
 
-    public String getRecipe_name() {
-        return recipe_name;
-    }
+// //   public String getRecipe_name() {
+//        return recipe_name;
+//    }
 
 //    public void setRecipe_name(String recipe_name) {
 //        this.recipe_name = recipe_name;
 //    }
 
-    public int getServings() {
+    public String getServings() {
         return servings;
     }
 
@@ -56,7 +56,7 @@ public class Recipe extends AbstractEntity {
 //        this.servings = servings;
 //    }
 
-    public int getServe_time() {
+    public String getServe_time() {
         return serve_time;
     }
 
