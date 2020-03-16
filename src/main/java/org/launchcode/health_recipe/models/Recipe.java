@@ -28,7 +28,7 @@ public class Recipe extends AbstractEntity {
     @NotNull (message = "Serve time?")
     private String serve_time;
 
-    @Size(max = 20000, message = "Steps cannot exceed 20000 characters.")
+    @Size(max = 5000, message = "Steps cannot exceed 20000 characters.")
     @NotNull (message = "Recipe steps?")
     private String steps;
 
