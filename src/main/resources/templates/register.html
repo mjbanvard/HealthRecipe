@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns : th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml">
-<headth th:replace="fragments :: head"></head>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments :: header"></header>
+<header th:replace="fragments ::page-header"></header>
 
 <form method="post">
     <div class="form-group">
         <label>Username
-        <input class="form-control" th:field="${registerFormDTO.username}"/>
+            <input class="form-control" th:field="${registerFormDTO.username}" />
         </label>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
     <div class="form-group">
         <label>Password
-        <input class="form-control" th:field="${registerFormDTO.password}" type="password"/>
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </div>
     <div class="form-group">
         <label>Verify Password
-        <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
         </label>
     </div>
 
-    <input type="submit" class="btn btn-primary" value="Register"/>
+    <input type="submit" class="btn btn-primary" value="Register" />
 </form>
 
 </body>

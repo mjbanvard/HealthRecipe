@@ -1,9 +1,8 @@
 package org.launchcode.health_recipe.controllers;
 
-import org.apache.catalina.filters.ExpiresFilter;
 import org.launchcode.health_recipe.models.User;
 import org.launchcode.health_recipe.models.data.UserRepository;
-import org.launchcode.health_recipe.models.dto.LogInFormDTO;
+import org.launchcode.health_recipe.models.dto.LoginFormDTO;
 import org.launchcode.health_recipe.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -88,13 +86,13 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
-        model.addAttribute(new LogInFormDTO());
+        model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
     }
 
     @PostMapping("/login")
-    public String processLoginForm(@ModelAttribute @Valid LogInFormDTO loginFormDTO,
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
                                    Model model) {
 

@@ -1,6 +1,6 @@
 package org.launchcode.health_recipe.models.dto;
 
-public class RegisterFormDTO extends LogInFormDTO {
+public class RegisterFormDTO extends LoginFormDTO {
     private String verifyPassword;
 
     public String getVerifyPassword() {
