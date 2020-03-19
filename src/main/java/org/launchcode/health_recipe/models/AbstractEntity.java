@@ -65,17 +65,17 @@ import java.util.Objects;
 public abstract class AbstractEntity {
 
 
-//    @Id
-//    @GeneratedValue
-//    private int id;
     @Id
-    @NotBlank
-    @Size(max = 255)
+    @GeneratedValue
+    private int id;
+
+
+    @Size(max = 150)
     private String name;
 
-//    public int getId() {
-//        return id;
-//    }
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -90,17 +90,17 @@ public abstract class AbstractEntity {
         return name;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        AbstractEntity that = (AbstractEntity) o;
-//        return id == that.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractEntity that = (AbstractEntity) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 }

@@ -3,9 +3,10 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 
-<header th:replace="fragments ::page-header"></header>
+<header th:replace="fragments :: header"></header>
 
 <form method="post">
+
     <div class="form-group">
         <label>Username
             <input class="form-control" th:field="${registerFormDTO.username}" />
