@@ -2,6 +2,7 @@ package org.launchcode.health_recipe.models;
 
 import org.springframework.context.annotation.Primary;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -28,6 +29,7 @@ public class Recipe extends AbstractEntity {
     private String serve_time;
 
     @NotNull (message = "Recipe steps?")
+    @Column(length=15500)
     private String steps;
 
     public Recipe() {}
