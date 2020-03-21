@@ -1,8 +1,8 @@
 package org.launchcode.health_recipe.controllers;
 
-import org.launchcode.health_recipe.models.Job;
+import org.launchcode.health_recipe.models.Recipe;
 import org.launchcode.health_recipe.models.data.EmployerRepository;
-import org.launchcode.health_recipe.models.data.JobRepository;
+import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.launchcode.health_recipe.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import org.launchcode.health_recipe.models.JobData;
+import org.launchcode.health_recipe.models.RecipeData;
 
 import java.util.HashMap;
 
@@ -22,7 +22,7 @@ import java.util.HashMap;
 public class ListController {
 
     @Autowired
-    private JobRepository jobRepository;
+    private RecipeRepository recipeRepository;
 
     @Autowired
     private SkillRepository skillRepository;
@@ -48,18 +48,18 @@ public class ListController {
         return "list";
     }
 
-    @RequestMapping(value = "jobs")
-    public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
-        Iterable<Job> jobs;
+    @RequestMapping(value = "recipes")
+    public String listRecipesByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+        Iterable<Recipe> recipes;
         if (column.toLowerCase().equals("all")){
-            jobs = jobRepository.findAll();
-            model.addAttribute("title", "All Jobs");
+            recipes = recipeRepository.findAll();
+            model.addAttribute("title", "All Recipes");
         } else {
-            jobs = JobData.findByColumnAndValue(column, value, jobRepository.findAll());
-            model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
+            recipes = RecipeData.findByColumnAndValue(column, value, recipeRepository.findAll());
+            model.addAttribute("title", "Recipes with " + columnChoices.get(column) + ": " + value);
         }
-        model.addAttribute("jobs", jobs);
+        model.addAttribute("recipes", recipes);
 
-        return "list-jobs";
+        return "list-recipes";
     }
 }
