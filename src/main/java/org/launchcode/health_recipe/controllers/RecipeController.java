@@ -1,7 +1,6 @@
 package org.launchcode.health_recipe.controllers;
 
 import org.launchcode.health_recipe.models.Recipe;
-import org.launchcode.health_recipe.models.RecipeData;
 import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import org.launchcode.health_recipe.models.RecipeData;
+
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("recipes")
+@RequestMapping(value = "recipes")
 public class RecipeController {
 
     @Autowired
@@ -34,7 +35,8 @@ public class RecipeController {
     public String displayAllRecipes(Model model) {
         model.addAttribute("title", "All Recipes");
         model.addAttribute( "recipes", recipeRepository.findAll() );
-        return "recipes/index";
+        return "list-recipes";
+//        return "recipes/index";
     }
 
     @GetMapping("add")

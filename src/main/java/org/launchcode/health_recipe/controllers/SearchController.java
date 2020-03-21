@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import static org.launchcode.health_recipe.controllers.ListController.columnChoices;
+import static org.launchcode.health_recipe.controllers.RecipeController.columnChoices;
 
 /**
  * Created by LaunchCode
