@@ -2,25 +2,17 @@ package org.launchcode.health_recipe.models;
 
 import org.springframework.context.annotation.Primary;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Recipe extends AbstractEntity {
+public class Recipe {
 
-//      Recipe Name
-//      Servings
-//      Start to Finish Time
-//      Steps
-
-//   @OneToMany
-//    @NotNull(message = "Recipe name cannot be empty.")
-//    private String recipe_name;
+    @Id
+    @NotNull (message = "Name?")
+    private String name;
 
     @NotNull (message = "Servings?")
     private String servings;
@@ -34,62 +26,42 @@ public class Recipe extends AbstractEntity {
 
     public Recipe() {}
 
-    public Recipe(String servings, String timeToServe, String stepsToRecipe) {
-        super();
-//        this.recipe_name = recipeName;
+    public Recipe(String name, String servings, String timeToServe, String stepsToRecipe) {
+        this.name = name;
         this.servings = servings;
         this.serve_time = timeToServe;
         this.steps = stepsToRecipe;
     }
 
-// //   public String getRecipe_name() {
-//        return recipe_name;
-//    }
+    public String getName() {
+        return name;
+    }
 
-//    public void setRecipe_name(String recipe_name) {
-//        this.recipe_name = recipe_name;
-//    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getServings() {
         return servings;
     }
 
-//    public void setServings(int servings) {
-//        this.servings = servings;
-//    }
+    public void setServings(String servings) {
+        this.servings = servings;
+    }
 
     public String getServe_time() {
         return serve_time;
     }
 
-//    public void setServe_time(int serve_time) {
-//        this.serve_time = serve_time;
-//    }
+    public void setServe_time(String serve_time) {
+        this.serve_time = serve_time;
+    }
 
     public String getSteps() {
         return steps;
     }
 
-//    public void setSteps(String steps) {
-//        this.steps = steps;
-//    }
-
-    //    @ManyToOne
-//    @NotNull(message = "Employer is required, please select an employer.")
-//    private Employer employer;
-//
-//    @ManyToMany
-//    @NotNull(message = "At least one skill required. Please select a skill.")
-//    private List<Skill> skills = new ArrayList<>();
-//
-//    public Job() { }
-//    public Job(Employer employer, List<Skill> skills) {
-//        super();
-//        this.employer = employer;
-//        this.skills = skills;
-//    }
-//    public Employer getEmployer() { return employer; }
-//    public void setEmployer(Employer employer) { this.employer = employer; }
-//    public List<Skill> getSkills() { return skills; }
-//    public void setSkills(List<Skill> skills) { this.skills = skills; }
+    public void setSteps(String steps) {
+        this.steps = steps;
+    }
 }
