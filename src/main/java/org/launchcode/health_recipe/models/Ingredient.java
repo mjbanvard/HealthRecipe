@@ -15,9 +15,6 @@ public class Ingredient extends AbstractEntity {
     @Size(min = 3,max = 255, message = "Ingredient must be only 3-255 characters.  Please try again.")
     private String ingredient;
 
-//    @OneToMany
-//    @JoinColumn
-//    private final List<Job> jobs = new ArrayList<>();
 
     public Ingredient(String ingredient){
         this.ingredient = ingredient;
