@@ -2,10 +2,7 @@ package org.launchcode.health_recipe.models;
 
 import org.springframework.context.annotation.Primary;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +34,23 @@ public class Recipe extends AbstractEntity {
         return servings;
     }
 
+    public void setServings(String servings) {
+        this.servings = servings;
+    }
 
     public String getServe_time() {
         return serve_time;
     }
 
+    public void setServe_time(String serve_time) {
+        this.serve_time = serve_time;
+    }
 
     public String getSteps() {
         return steps;
     }
 
+    public void setSteps(String steps) {
+        this.steps = steps;
+    }
 }

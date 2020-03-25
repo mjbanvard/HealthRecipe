@@ -8,21 +8,35 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import org.launchcode.health_recipe.models.RecipeData;
+
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("recipes")
+@RequestMapping(value = "recipes")
 public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
 
+    static HashMap<String, String> columnChoices = new HashMap<>();
+
+    public RecipeController () {
+
+        columnChoices.put("all", "All");
+//        columnChoices.put("employer", "Employer");
+//        columnChoices.put("skill", "Skill");
+
+    }
+
     @GetMapping
     public String displayAllRecipes(Model model) {
         model.addAttribute("title", "All Recipes");
         model.addAttribute( "recipes", recipeRepository.findAll() );
-        return "recipes/index";
+        return "list-recipes";
+//        return "recipes/index";
     }
 
     @GetMapping("add")
@@ -43,18 +57,33 @@ public class RecipeController {
         return "redirect:";
     }
 
-    @GetMapping("view/{recipeId}")
+    @GetMapping("view/{name}")
     public String displayViewRecipe(Model model, @PathVariable int recipeId) {
 
         Optional<Recipe> optRecipe = recipeRepository.findById(recipeId);
         if (optRecipe.isPresent()) {
             Recipe recipe = (Recipe)optRecipe.get();
             model.addAttribute( "recipes", recipe );
-            return "recipes/view";
+            return "list-recipes";
         } else {
             model.addAttribute( "recipes", recipeRepository.findAll() );
             return "redirect:../";
         }
+    }
+
+    @RequestMapping(value = "recipes")
+    public String listRecipesByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+        Iterable<Recipe> recipes;
+        if (column.toLowerCase().equals("all")){
+            recipes = recipeRepository.findAll();
+            model.addAttribute("title", "All Recipes");
+        } else {
+            recipes = RecipeData.findByColumnAndValue(column, value, recipeRepository.findAll());
+            model.addAttribute("title", "Recipes with " + columnChoices.get(column) + ": " + value);
+        }
+        model.addAttribute("recipes", recipes);
+
+        return "list-recipes";
     }
 }
 

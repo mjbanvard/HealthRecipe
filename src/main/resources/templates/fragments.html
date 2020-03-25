@@ -7,27 +7,30 @@
     <meta charset="UTF-8"/>
     <title>Health Recipes</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/health_recipe.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
-    <link rel="stylesheet" th:href="@{/styles.css}">
-
+    <title th:text="'health_recipe' + ${title == null ? '' : ' :: ' + title}">health_recipe</title>
 </head>
 
 <body>
 
-<header th:fragment="header">
-    <h1 th:text="${title}">Health Recipes</h1>
-    <ul class="nav" style="float:right;">
-        <li class="nav-item"><a class="nav-link" href="/logout">Log out</a> </li>
-    </ul>
-            <ul class="nav">
-                <li><a th:href="@{/list}">List</a></li>
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">health_recipe</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/recipes}">Recipes</a></li>
                 <li><a th:href="@{/search}">Search</a></li>
                 <li><a th:href="@{/add}">Add Jobs</a></li>
             </ul>
-</header>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
-
