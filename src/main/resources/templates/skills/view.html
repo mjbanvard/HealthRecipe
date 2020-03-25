@@ -5,7 +5,7 @@
 <body class="container  body-content">
 <h1 th:text="${'Skill: ' + skills.name}">Default Title</h1>
 
-<nav th:replace="fragments :: header"></nav>
+<div th:replace="fragments :: page-header"></div>
 
 <div class="job-listing">
     <p th:text="${'Name: ' + skills.name}"></p>
