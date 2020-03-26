@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Recipe {
-
-    @Id
-    @NotNull (message = "Name?")
-    private String name;
+public class Recipe extends AbstractEntity {
 
     @NotNull (message = "Servings?")
     private String servings;
@@ -26,20 +22,13 @@ public class Recipe {
 
     public Recipe() {}
 
-    public Recipe(String name, String servings, String timeToServe, String stepsToRecipe) {
-        this.name = name;
+    public Recipe(String servings, String timeToServe, String stepsToRecipe) {
+        super();
         this.servings = servings;
         this.serve_time = timeToServe;
         this.steps = stepsToRecipe;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getServings() {
         return servings;

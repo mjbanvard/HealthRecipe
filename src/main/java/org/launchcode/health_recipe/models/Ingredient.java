@@ -12,9 +12,10 @@ import java.util.List;
 public class Ingredient extends AbstractEntity {
 
     @NotBlank(message = "Please provide Recipe ingredient.")
-    @Size(min = 3,max = 1000, message = "Ingredient must be only 3-1000 characters.  Please try again.")
+    @Size(min = 3,max = 255, message = "Ingredient must be only 3-255 characters.  Please try again.")
     private String ingredient;
-    
+
+
     public Ingredient(String ingredient){
         this.ingredient = ingredient;
     }
