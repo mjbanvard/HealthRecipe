@@ -10,22 +10,18 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
+
     <table class="recipe-listing">
         <tr th:each="recipe : ${recipes}">
             <td>
                 <p>
-                    Recipe Name:
-                    <a th:href="@{'/view/' + ${recipe.name}}" th:text="${recipe.name}"></a>
+                    Recipe Id:
+                    <a th:href="@{'/view/' + ${recipe.id}}" th:text="${recipe.id}"></a>
                 </p>
-                <p>
-                    Servings
-                    <a th:href="@{'/view/' + ${recipe.servings}}" th:text="${recipe.servings}"></a>
-<!--                    <a th:text="${'Name: ' + recipe.name}">-->
-                </p>
-                <p>
-                    Prep to Serve Time:
-                    <a th:href="@{'/view/' + ${recipe.serve_time}}" th:text="${recipe.serve_time}"></a>
-                </p>
+                <p th:text="${'Name: ' + recipe.name}"></p>
+                <p th:text="${'Time: ' + recipe.serve_time}"></p>
+                <p th:text="${'Servings: ' + recipe.servings}"></p>
+                <p th:text="${'Steps: ' + recipe.steps}"></p>
 
             </td>
         </tr>

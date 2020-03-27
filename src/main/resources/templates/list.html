@@ -14,26 +14,32 @@
 <table class="centeredTable">
     <tr>
         <th>All</th>
-        <th>Employer</th>
-        <th>Skill</th>
+        <th>Recipe</th>
+        <th>Serve_Time</th>
+        <th>Servings</th>
     </tr>
 
     <tr>
         <td>
             <li>
-                <a th:href="@{/recipe/recipes(column='All',value='View All')}">View All</a>
+                <a th:href="@{/list/recipes(column='All',value='View All')}">View All</a>
             </li>
         </td>
-<!--        <td>-->
-<!--            <li th:each="employer : ${employers}">-->
-<!--                <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}"></a>-->
-<!--            </li>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <li th:each="skill : ${skills}">-->
-<!--                <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}"></a>-->
-<!--            </li>-->
-<!--        </td>-->
+        <td>
+            <li th:each="recipe : ${recipes}">
+                <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="recipe : ${recipes}">
+                <a th:href="@{/list/recipes(column=serve_time,value=${recipe.serve_time})}" th:text="${recipe.serve_time}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="recipe : ${recipes}">
+                <a th:href="@{/list/recipes(column=servings,value=${recipe.servings})}" th:text="${recipe.servings}"></a>
+            </li>
+        </td>
     </tr>
 </table>
 
