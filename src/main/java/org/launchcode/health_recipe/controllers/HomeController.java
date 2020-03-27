@@ -1,11 +1,7 @@
 package org.launchcode.health_recipe.controllers;
 
-import org.launchcode.health_recipe.models.Employer;
-import org.launchcode.health_recipe.models.Job;
-import org.launchcode.health_recipe.models.Skill;
-import org.launchcode.health_recipe.models.data.EmployerRepository;
-import org.launchcode.health_recipe.models.data.JobRepository;
-import org.launchcode.health_recipe.models.data.SkillRepository;
+import org.launchcode.health_recipe.models.Recipe;
+import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,58 +18,43 @@ import java.util.Optional;
 public class HomeController {
 
     @Autowired
-    private EmployerRepository employerRepository;
-
-    @Autowired
-    private JobRepository jobRepository;
-
-    @Autowired
-    private SkillRepository skillRepository;
+    private RecipeRepository recipeRepository;
 
     @RequestMapping("")
     public String index(Model model) {
 
-        model.addAttribute("title", "My Jobs");
-        model.addAttribute("jobs", jobRepository.findAll());
+        model.addAttribute("title", "My Recipes");
+        model.addAttribute("recipes", recipeRepository.findAll());
 
         return "index";
     }
 
     @GetMapping("add")
-    public String displayAddJobForm(Model model) {
-        model.addAttribute("title", "Add Job");
-        model.addAttribute("employers", employerRepository.findAll());
-        model.addAttribute("skills", skillRepository.findAll());
-        model.addAttribute(new Job());
+    public String displayAddRecipeForm(Model model) {
+        model.addAttribute("title", "Add Recipe");
+        model.addAttribute(new Recipe());
         return "add";
     }
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute Job newJob,
-                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills){
+    public String processAddRecipeForm(@ModelAttribute Recipe newRecipe,
+                                    Errors errors, Model model){
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Job");
+            model.addAttribute("title", "Add Recipe");
             return "add";
-
         }
-        Optional<Employer> employerOptional = employerRepository.findById(employerId);
-        Employer employer = employerOptional.get();
-        newJob.setEmployer(employer);
 
-        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-        newJob.setSkills(skillObjs);
-
-        jobRepository.save(newJob);
+        recipeRepository.save(newRecipe);
         return "redirect:";
     }
 
-    @GetMapping("view/{jobId}")
-    public String displayViewJob(Model model, @PathVariable int jobId){
-        Optional optJob = jobRepository.findById(jobId);;
-        if (optJob.isPresent()) {
-            Job job = (Job) optJob.get();
-            model.addAttribute("job", job);
+    @GetMapping("view/{recipeId}")
+    public String displayViewRecipe(Model model, @PathVariable int recipeId){
+        Optional optRecipe = recipeRepository.findById(recipeId);;
+        if (optRecipe.isPresent()) {
+            Recipe recipe = (Recipe) optRecipe.get();
+            model.addAttribute("recipe", recipe);
             return "view";
         } else {
             return "redirect:../";
