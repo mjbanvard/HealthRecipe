@@ -1,14 +1,38 @@
 package org.launchcode.health_recipe.models;
 
+import org.launchcode.health_recipe.models.data.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
+import java.util.List;
 
 // This is a change made in sandbox.
 
 /**
  * Created by LaunchCode
  */
+@Service
 public class RecipeData {
 
+    @Autowired
+    RecipeRepository recipeRepository;
+
+    /**
+     * Returns pageable list of Recipes
+     */
+
+    public List<Recipe> getAllRecipe() {
+        List<Recipe> allRecipe = new ArrayList<>();
+
+        recipeRepository.findAll().forEach(allRecipe :: add);
+        return allRecipe;
+    }
+    public Page<Recipe> findAllByPage(Pageable pageable) {
+        return recipeRepository.findAll(pageable);
+    }
 
     /**
      * Returns the results of searching the Recipes data by field and search term.
