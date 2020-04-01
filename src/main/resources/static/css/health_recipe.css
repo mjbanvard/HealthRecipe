@@ -29,8 +29,8 @@ li {
 /*this is view recipes by category page*/
 .centeredTable th {
   background-color: Lime;
-
 }
+
 
 h1 {
  text-align: center;
@@ -103,7 +103,7 @@ margin: 0px; {
 }
 /*login page styling*/
 .login-cards {
-  margin-left: 2em;
+  margin-left: 15em;
   margin-right: 2em;
   max-width: 1000px;
   display: grid;
@@ -137,8 +137,10 @@ margin: 0px; {
      padding: 1.3em;
      border-radius: .5em;
  }
+
 /*cards on login page; pictures are not displaying at this time - don't know why.
   I just put borders around cards for now*/
+
 .loginCard-1 {
    background:  Yellow url('/login/images/avocados.jpg');
     background-position: 0% 0%;
