@@ -3,18 +3,28 @@ package org.launchcode.health_recipe.controllers;
 import org.launchcode.health_recipe.models.Recipe;
 import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import org.launchcode.health_recipe.models.RecipeData;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping(value = "list")
 public class RecipeController {
+
+    @Autowired
+    RecipeData recipeData;
 
     @Autowired
     private RecipeRepository recipeRepository;
@@ -27,10 +37,12 @@ public class RecipeController {
     }
 
     @RequestMapping("")
-    public String list(Model model) {
-        model.addAttribute("recipes", recipeRepository.findAll());
+    public String list(Model model, Pageable page) {
+        Page<Recipe> recipes;
+        model.addAttribute("recipes", recipeData.findAllByPage(page));
         return "list";
     }
+
 
     @RequestMapping(value = "recipes")
     public String listRecipeByChoice(Model model, @RequestParam String column, @RequestParam String value) {
@@ -46,5 +58,6 @@ public class RecipeController {
 
         return "list-recipes";
     }
+
 }
 
