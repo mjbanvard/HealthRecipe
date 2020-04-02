@@ -14,11 +14,21 @@ body {
   margin: 2em;
   font-size: 24px;
   font-weight: bold;
+
+ /*text under logout button all pages*/
+ } .nav p {
+   font-weight: bold;
  }
 
-
+/*All the headings background on all pages*/
 .container {
- background-color: LightGreen;
+ background-color: LightSeaGreen;
+}
+/*controls only the background on add.html but not headings*/
+.body-content-1 {
+  background: url('../images/ingredientstwo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /*this controls the logout button on all pages*/
 li {
@@ -26,17 +36,20 @@ li {
   padding: 8px;
   font-weight: bold;
 }
-/*this is view recipes by category page*/
+/*this is view recipes by category page - All, Recipe, Serve Time, Servings */
 .centeredTable th {
-  background-color: Lime;
+  background-color: ForestGreen;
 }
 
-
+/*may be only Add Recipe on add.html and possibly Username and Password*/
 h1 {
  text-align: center;
   margin: 0;
   margin-top: 2em;
   margin-bottom: 2em;
+  font-weight; bold;
+  font-size: 3rem;
+
 }
 
 td, th {
@@ -83,11 +96,6 @@ label {
     text-align: center;
 }
 
-/*p {
-    vertical-align: top;
-    margin-left: 30px;
-}*/
-
 .centeredTable {
     margin-left: auto;
     margin-right: auto;
@@ -123,7 +131,7 @@ margin: 0px; {
   text-align: center;
  }
  .form-group label {
-   font-size: 1.5rem;
+   font-size: 2rem;
    font-weight: bold;
    margin-bottom: 1em;
    margin-top: 1.5em;
@@ -131,6 +139,7 @@ margin: 0px; {
  .form-group p {
    font-size: 1.5rem;
  }
+ /*this controls the username and password boxes user types in*/
  .form-control {
     background-color: white;
      width: 85%;
@@ -142,31 +151,31 @@ margin: 0px; {
   I just put borders around cards for now*/
 
 .loginCard-1 {
-   background:  Yellow url('/login/images/avocados.jpg');
+   background: Gold; url('/images/avocados.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 5em;
     margin: 0;
-    border-radius: 15px;
+    border-radius: 10px 100px / 120px;
 }
 .loginCard-2 {
-    background:  Violet url('static/images/vegincircle.jpg');
+    background:  Orchid url('/images/vegincircle.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 5em;
     margin: 0;
-    border-radius: 15px;
+    border-radius: 10px 100px / 120px;
 }
 .loginCard-3 {
-    background:  Orange url('/images/glutenfree.jpg');
+    background:  Coral url('/images/glutenfree.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 5em;
     margin: 0;
-    border-radius: 15px;
+    border-radius: 10px 100px / 120px;
 }
 
 /*checkboxes layout*/
@@ -216,7 +225,7 @@ margin: 0px; {
 
 }
 .card-2 p {
-  color: DarkOrange;
+  color: Crimson;
 }
 .card-3 {
   background: url("../images/betteringredients.jpg");
@@ -228,7 +237,7 @@ margin: 0px; {
     margin: 0;
 }
 .card-3 p {
- color: Green;
+ color: DarkGreen;
 }
 .card-3 card-content {
    margin-top: 5rem;
@@ -323,7 +332,7 @@ margin: 0px; {
 }
 /*go to recipe choices page button*/
 .optionsbtn {
-  background-color: Coral;
+  background-color: LightSalmon;
      box-shadow: 0 5px OrangeRed;
      width: 80%;
      padding: 1em;
