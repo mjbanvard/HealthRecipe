@@ -1,5 +1,55 @@
-.body-content {
-    margin-top: 72px;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body {
+ font-family: 'Montserrat', sans-serif;
+ margin: 0;
+}
+ .body-content {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+/*the heading Health Recipe*/
+.navbar-brand {
+  margin: 2em;
+  font-size: 24px;
+  font-weight: bold;
+
+ /*text under logout button all pages*/
+ } .nav p {
+   font-weight: bold;
+ }
+
+/*All the headings background on all pages*/
+.container {
+ background-color: LightSeaGreen;
+}
+/*controls only the background on add.html but not headings*/
+.body-content-1 {
+  background: url('../images/ingredientstwo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*this controls the logout button on all pages*/
+li {
+  display: inline;
+  padding: 8px;
+  font-weight: bold;
+}
+/*this is view recipes by category page - All, Recipe, Serve Time, Servings */
+.centeredTable th {
+  background-color: ForestGreen;
+}
+
+/*may be only Add Recipe on add.html and possibly Username and Password*/
+h1 {
+ text-align: center;
+  margin: 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-weight; bold;
+  font-size: 3rem;
+
 }
 
 td, th {
@@ -38,16 +88,12 @@ table.job-listing td:last-child {
 }
 
 label {
-    margin-right: 15px;
+    display: block;
+    margin-left: 5px;
 }
 
 .centered {
     text-align: center;
-}
-
-p {
-    vertical-align: top;
-    margin-left: 30px;
 }
 
 .centeredTable {
@@ -60,3 +106,249 @@ div.job-listing {
     width: 80%;
     background-color: #e4e4e4;
 }
+/*login page css*/
+margin: 0px; {
+}
+/*login page styling*/
+.login-cards {
+  margin-left: 15em;
+  margin-right: 2em;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1em;
+  font-weight: bold;
+  height: 600px;
+}
+.card-image-1 {
+   width: 100%;
+   position: relative;
+   display: block;
+   border-radius: 10px;
+ }
+ /*username and password styling*/
+ .form-group {
+  text-align: center;
+ }
+ .form-group label {
+   font-size: 2rem;
+   font-weight: bold;
+   margin-bottom: 1em;
+   margin-top: 1.5em;
+ }
+ .form-group p {
+   font-size: 1.5rem;
+ }
+ /*this controls the username and password boxes user types in*/
+ .form-control {
+    background-color: white;
+     width: 85%;
+     padding: 1.3em;
+     border-radius: .5em;
+ }
+
+/*cards on login page; pictures are not displaying at this time - don't know why.
+  I just put borders around cards for now*/
+
+.loginCard-1 {
+   background: Gold; url('/images/avocados.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    margin: 0;
+    border-radius: 10px 100px / 120px;
+}
+.loginCard-2 {
+    background:  Orchid url('/images/vegincircle.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    margin: 0;
+    border-radius: 10px 100px / 120px;
+}
+.loginCard-3 {
+    background:  Coral url('/images/glutenfree.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    margin: 0;
+    border-radius: 10px 100px / 120px;
+}
+
+/*checkboxes layout*/
+.checkbox-cards {
+  margin-left: 2em;
+  margin-right: 2em;
+  max-width: 1480px;
+  display: grid;
+  /*grid-template-columns: repeat(4, 25vmin);*/
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /*grid-template-columns: repeat(3, 1fr);*/
+  grid-gap: 1em;
+  font-weight: bold;
+  height: 600px;
+}
+.checkbox-cards p {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+}
+/*.card-image {
+  width: 100%;
+  display: block;
+}*/
+/*styling for each card on choices page, includes images*/
+.card-1 {
+  background: url('../images/strawberries.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+    height:600px;
+
+}
+.card-2 {
+  background: url('../images/ingredients.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+
+}
+.card-2 p {
+  color: Crimson;
+}
+.card-3 {
+  background: url("../images/betteringredients.jpg");
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+}
+.card-3 p {
+ color: DarkGreen;
+}
+.card-3 card-content {
+   margin-top: 5rem;
+}
+
+.card-4 {
+  background: url('../images/manyclocks.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+}
+
+.card-4 p {
+ color: DarkBlue;
+}
+/*.card {
+  margin: 20px 0 0 0;
+  padding: 0;
+  display: block;
+  width: auto;
+}*/
+
+.card-image {
+   width: 100%;
+   position: relative;
+   display: block;
+   border-radius: 10px;
+  /* -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+   -moz-transition: 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
+   transition: 0.3s ease-in-out, transform 0.3s ease-in-out;*/
+}
+/*.card-image:hover {
+  transform: scale(1.05);
+}*/
+/*.card:after {
+ clear: both;
+}
+.card:after, card-image:before {
+  content: "";
+  display: table;
+}*/
+
+.card-content {
+  margin-top: 7em;
+  line-height: 2em;
+  font-size: 1.0rem;
+  background: aqua;
+  grid-template-row: 4/6;
+
+  }
+  /*footer and buttons; not button for logout. this is on recipes choices page*/
+  .footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     height: 5em;
+     width: 100%;
+     background-color: LightGreen;
+     text-align: center;
+  }
+.btn {
+  display: inline-block;
+  font-size: 24px;
+  color: white;
+  box-shadow: 0 9px #999;
+  background-color: rgb(7, 20, 97);
+  border: 2px violet;
+  border-radius: 15px;
+}
+/*login button only*/
+.loginbtn {
+  background-color: green;
+  box-shadow: 0 5px #666;
+  width: 80%;
+  padding: 1em;
+  border-radius: .5em;
+  margin-left:  30px;
+}
+/*registration button*/
+.registerbtn {
+   background-color: MediumOrchid;
+   box-shadow: 0 5px RebeccaPurple;
+   width: 80%;
+   padding: 1em;
+   border-radius: .5em;
+   margin-left: 5px;
+   color: white;
+   text-decoration: none;
+}
+/*go to recipe choices page button*/
+.optionsbtn {
+  background-color: LightSalmon;
+     box-shadow: 0 5px OrangeRed;
+     width: 80%;
+     padding: 1em;
+     border-radius: .5em;
+     margin-left: 3px;
+     color: white;
+     text-decoration: none;
+}
+/*add recipe button*/
+.addRecipeBtn {
+  background-color: MediumSlateBlue;
+    box-shadow: 0 5px #666;
+    width: 50%;
+    padding: 1em;
+    border-radius: .5em;
+    margin-left:  30px;
+    margin-top: 1em;
+}
+
