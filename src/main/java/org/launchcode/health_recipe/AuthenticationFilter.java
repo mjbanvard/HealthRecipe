@@ -53,7 +53,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
         //The user is not logged in, this statement below redirects the user to the specified path stated in the ("/path)
         response.sendRedirect("/login");
-        return false;
+        return true;
 
     }
 }
