@@ -13,13 +13,16 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
+    private String access;
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {}
 
-    public User(String username, String password) {
+    public User(String username, String password, String access) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.access = access;
     }
 
     public String getUsername() {
@@ -34,4 +37,11 @@ public class User extends AbstractEntity {
         return encoder.matches(password, pwHash);
     }
 
+    public String getAccess() {
+        return access;
+    }
+
+    public void setAccess(String access) {
+        this.access = access;
+    }
 }
