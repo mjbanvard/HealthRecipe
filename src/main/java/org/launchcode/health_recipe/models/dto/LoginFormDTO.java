@@ -17,7 +17,7 @@ public class LoginFormDTO {
     @Size(min=3, max=20, message = "Invalid username, must be between 3 and 20 characters.")
     private  String password;
 
-    @Pattern(regexp = "[1-3]")
+    @Pattern(regexp = "[1-2]")
     private String access;
 
     public String getUsername() {
