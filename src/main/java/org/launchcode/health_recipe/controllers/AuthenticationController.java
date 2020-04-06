@@ -79,6 +79,48 @@ public class AuthenticationController {
 
         User newUser = new User(registerFormDTO.getName(), registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getAccess());
 
+        newUser.setAccess("2");
+        userRepository.save(newUser);
+        setUserInSession(request.getSession(), newUser);
+
+        return "redirect:/login";
+    }
+
+    @GetMapping("adminregister")
+    public String displayAdminRegistrationForm(Model model) {
+        model.addAttribute(new RegisterFormDTO());
+        model.addAttribute("title", "Register");
+        return "adminregister";
+    }
+
+    @PostMapping("/adminregister")
+    public String processAdminRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
+                                          Errors errors, HttpServletRequest request,
+                                          Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Register");
+            return "adminregister";
+        }
+
+        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+
+        if (existingUser != null) {
+            errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
+            model.addAttribute("title", "Register");
+            return "adminregister";
+        }
+
+        String password = registerFormDTO.getPassword();
+        String verifyPassword = registerFormDTO.getVerifyPassword();
+        if (!password.equals(verifyPassword)) {
+            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            model.addAttribute("title", "Register");
+            return "adminregister";
+        }
+
+        User newUser = new User(registerFormDTO.getName(), registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getAccess());
+
         newUser.setAccess("1");
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
