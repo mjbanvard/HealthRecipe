@@ -7,6 +7,9 @@ import javax.validation.constraints.Size;
 
 public class LoginFormDTO {
 
+    @Size(min=3, max=30, message = "Invalid name, must be between 3 and 30 characters.")
+    private String name;
+
     @NotNull
     @NotBlank
     @Size(min=3, max=30, message = "Invalid username, must be between 3 and 30 characters.")
@@ -19,6 +22,14 @@ public class LoginFormDTO {
 
     @Pattern(regexp = "[1-2]")
     private String access;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getUsername() {
         return username;
@@ -42,5 +53,10 @@ public class LoginFormDTO {
 
     public void setAccess(String access) {
         this.access = access;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
