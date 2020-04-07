@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 public class User extends AbstractEntity {
 
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
-    @Size(min=11)
+    @Size(min=9)
     private String email;
 
     @NotNull

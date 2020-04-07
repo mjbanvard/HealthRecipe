@@ -11,9 +11,9 @@ public class RegisterFormDTO extends LoginFormDTO {
     @Size(min=3, max=30, message = "Invalid name, must be between 3 and 30 characters.")
     private String name;
 
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message ="Email not valid, must have at least a minimum of 11 " +
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message ="Email not valid, must have at least a minimum of 9 " +
             "characters and include @ symbol" )
-    @Size(min=11)
+    @Size(min=9)
     private String email;
 
 
