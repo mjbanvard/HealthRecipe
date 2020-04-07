@@ -5,7 +5,7 @@ package org.launchcode.health_recipe.models;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -17,7 +17,7 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-
+    @NotNull
     @Size(max = 150)
     private String name;
 

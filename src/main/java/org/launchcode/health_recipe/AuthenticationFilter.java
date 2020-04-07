@@ -21,7 +21,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css", "index");
+    //In the constructor on the next line below is where any whitelisted paths are suppose to go:
+    private static final List<String> whitelist = Arrays.asList("/adminregister", "/list","/login", "/register", "/logout", "/css");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
@@ -32,12 +33,12 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         return false;
     }
 
+    //Doesn't Require Sign In for whitelisted pages
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws IOException{
 
-        //Doesn't Require Sign In for whitelisted pages
         if (isWhitelisted(request.getRequestURI())) {
             //Returning "true"
             return true;
@@ -50,7 +51,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
             return true;
         }
 
-        //The user is not logged in
+        //The user is not logged in, this statement below redirects the user to the specified path stated in the ("/path)
         response.sendRedirect("/login");
         return true;
 
