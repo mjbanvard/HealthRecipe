@@ -52,7 +52,7 @@ public class RecipeController {
             model.addAttribute("title", "All Recipes");
         } else {
             recipes = RecipeData.findByColumnAndValue(column, value, recipeRepository.findAll());
-            model.addAttribute("title", "Recipe Choice " + columnChoices.get(column) + ": " + value);
+            model.addAttribute("title", "Recipe Choice: " + value);
         }
         model.addAttribute("recipes", recipes);
 

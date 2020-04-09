@@ -1,44 +1,54 @@
-//package org.launchcode.health_recipe.controllers;
-//
-//import org.launchcode.health_recipe.models.Job;
-//import org.launchcode.health_recipe.models.JobData;
-//import org.launchcode.health_recipe.models.data.JobRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
-//
-//
-//import static org.launchcode.health_recipe.controllers.RecipeController.columnChoices;
-//
-///**
-// * Created by LaunchCode
-// */
-//@Controller
-//@RequestMapping("search")
-//public class SearchController {
-//
-//    @Autowired
-//    private JobRepository jobRepository;
-//
-//    @RequestMapping("")
-//    public String search(Model model) {
+package org.launchcode.health_recipe.controllers;
+
+import org.launchcode.health_recipe.models.Recipe;
+import org.launchcode.health_recipe.models.RecipeData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.launchcode.health_recipe.models.data.RecipeRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import static org.launchcode.health_recipe.controllers.RecipeController.columnChoices;
+
+@Controller
+@RequestMapping(value = "search")
+public class SearchController {
+
+    @Autowired
+    private RecipeRepository recipeRepository;
+
+    @RequestMapping("")
+    public String search(Model model) {
 //        model.addAttribute("columns", columnChoices);
-//        return "search";
-//    }
-//
+        return "search";
+    }
+
 //    @PostMapping("results")
 //    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
-//        Iterable<Job> jobs;
+//        Iterable<Recipe> recipes;
 //        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
-//            jobs = jobRepository.findAll();
+//            recipes = recipeRepository.findAll();
 //        } else {
-//            jobs = JobData.findByColumnAndValue(searchType, searchTerm, jobRepository.findAll());
+//            recipes = RecipeData.findByColumnAndValue(searchType, searchTerm, recipeRepository.findAll());
 //        }
 //        model.addAttribute("columns", columnChoices);
-//        model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
-//        model.addAttribute("jobs", jobs);
+//        model.addAttribute("title", "Recipes with " + columnChoices.get(searchType) + ": " + searchTerm);
+//        model.addAttribute("recipes", recipes);
 //
 //        return "search";
 //    }
-//}
+
+    @PostMapping("results")
+    public String displaySearchResults(Model model, @RequestParam String searchTerm) {
+        Iterable<Recipe> recipes;
+        if (searchTerm.toLowerCase().equals("")){
+            recipes = recipeRepository.findAll();
+        } else {
+            recipes = RecipeData.findByValue(searchTerm, recipeRepository.findAll());
+        }
+
+        model.addAttribute("title", "Recipe Names Containing '" + searchTerm.toLowerCase() + "'");
+        model.addAttribute("recipes", recipes);
+
+        return "search";
+    }
+}
