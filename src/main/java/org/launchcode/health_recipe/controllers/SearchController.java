@@ -18,20 +18,35 @@ public class SearchController {
 
     @RequestMapping("")
     public String search(Model model) {
-        model.addAttribute("columns", columnChoices);
+//        model.addAttribute("columns", columnChoices);
         return "search";
     }
 
+//    @PostMapping("results")
+//    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
+//        Iterable<Recipe> recipes;
+//        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+//            recipes = recipeRepository.findAll();
+//        } else {
+//            recipes = RecipeData.findByColumnAndValue(searchType, searchTerm, recipeRepository.findAll());
+//        }
+//        model.addAttribute("columns", columnChoices);
+//        model.addAttribute("title", "Recipes with " + columnChoices.get(searchType) + ": " + searchTerm);
+//        model.addAttribute("recipes", recipes);
+//
+//        return "search";
+//    }
+
     @PostMapping("results")
-    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
+    public String displaySearchResults(Model model, @RequestParam String searchTerm) {
         Iterable<Recipe> recipes;
-        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+        if (searchTerm.toLowerCase().equals("")){
             recipes = recipeRepository.findAll();
         } else {
-            recipes = RecipeData.findByColumnAndValue(searchType, searchTerm, recipeRepository.findAll());
+            recipes = RecipeData.findByValue(searchTerm, recipeRepository.findAll());
         }
-        model.addAttribute("columns", columnChoices);
-        model.addAttribute("title", "Recipes with " + columnChoices.get(searchType) + ": " + searchTerm);
+
+        model.addAttribute("title", "Recipes containing " + searchTerm);
         model.addAttribute("recipes", recipes);
 
         return "search";
