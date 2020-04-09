@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-
-<body class="container  body-content">
-<h1 th:text="${'Recipe: ' + recipe.name}">Default Title</h1>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
 
 <div th:replace="fragments :: page-header"></div>
 
-<div class="recipe-listing">
-    <p th:text="${'ID: ' + recipe.id}"></p>
-    <p th:text="${'Name: ' + recipe.name}"></p>
-    <p th:text="${'Time: ' + recipe.serve_time}"></p>
-    <p th:text="${'Servings: ' + recipe.servings}"></p>
-    <p th:text="${'Steps: ' + recipe.steps}"></p>
+<div class="container body-content">
+
+    <h1 th:text="${'Recipe: ' + recipe.name}">Default Title</h1>
+
+
+    <table class="recipe-listing">
+        <tr>
+            <td>
+                <p>
+                    Recipe Id:
+                    <a th:href="@{'/view/' + ${recipe.id}}" th:text="${recipe.id}"></a>
+                </p>
+                <p th:text="${'Name: ' + recipe.name}"></p>
+                <p th:text="${'Time: ' + recipe.serve_time}"></p>
+                <p th:text="${'Servings: ' + recipe.servings}"></p>
+                <p th:text="${'Steps: ' + recipe.steps}"></p>
+            </td>
+        </tr>
+    </table>
 
 </div>
 
-
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org/">-->
+<!--<head th:replace="fragments :: head"></head>-->
+
+<!--<body class="container  body-content">-->
+<!--<h1 th:text="${'Recipe: ' + recipe.name}">Default Title</h1>-->
+
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+<!--<div class="recipe-listing">-->
+<!--    <p th:text="${'ID: ' + recipe.id}"></p>-->
+<!--    <p th:text="${'Name: ' + recipe.name}"></p>-->
+<!--    <p th:text="${'Time: ' + recipe.serve_time}"></p>-->
+<!--    <p th:text="${'Servings: ' + recipe.servings}"></p>-->
+<!--    <p th:text="${'Steps: ' + recipe.steps}"></p>-->
+
+<!--</div>-->
+
+
+<!--</body>-->
+<!--</html>-->
