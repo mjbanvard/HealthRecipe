@@ -7,13 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-
 import static org.launchcode.health_recipe.controllers.RecipeController.columnChoices;
 
-/**
- * Created by LaunchCode
- */
 @Controller
 @RequestMapping(value = "search")
 public class SearchController {
