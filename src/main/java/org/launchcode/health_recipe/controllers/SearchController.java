@@ -46,7 +46,7 @@ public class SearchController {
             recipes = RecipeData.findByValue(searchTerm, recipeRepository.findAll());
         }
 
-        model.addAttribute("title", "Recipes containing " + searchTerm);
+        model.addAttribute("title", "Recipe Names Containing '" + searchTerm.toLowerCase() + "'");
         model.addAttribute("recipes", recipes);
 
         return "search";
