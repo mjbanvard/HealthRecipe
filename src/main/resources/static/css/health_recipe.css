@@ -3,26 +3,58 @@
 body {
  font-family: 'Montserrat', sans-serif;
  margin: 0;
+ background-color: #003E21;
+ color: #F8D098;
 }
  .body-content {
     margin-top: 4rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 /*the heading Health Recipe*/
 .navbar-brand {
-  margin: 2em;
+  margin: 2em 0 4em 2em;
   font-size: 24px;
   font-weight: bold;
+  color: #F8D098;
 
  /*text under logout button all pages*/
  } .nav p {
    font-weight: bold;
  }
 
+/* list-recipes.html-user selected recipe display*/
+.item1 { grid-area: recipe; }
+.item2 { grid-area: serve_time; }
+.item3 { grid-area: servings; }
+.item4 { grid-area: ingredients; }
+.item5 { grid-area: steps; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'recipe recipe recipe recipe recipe recipe'
+    'serve_time serve_time . . servings servings'
+    'ingredients ingredients ingredients steps steps steps';
+  grid-gap: 10px;
+  background-color: #003e21;
+  padding: 50px;
+  margin-top: 50px;
+}
+
+.grid-container > div {
+  background-color: #067242;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  color: #f8D098;
+}
+
 /*All the headings background on all pages*/
 .container {
- background-color: LightSeaGreen;
+ background-color: #067242;
+ padding: 20px 0;
+ margin: 0 50px 0 50px;
 }
 /*controls only the background on add.html but not headings*/
 .body-content-1 {
@@ -34,8 +66,15 @@ body {
 li {
   display: inline;
   padding: 8px;
+  font-size: 18px;
   font-weight: bold;
+  color: #F8D098;
 }
+
+a {
+    color: #F8D098;
+}
+
 /*this is view recipes by category page - All, Recipe, Serve Time, Servings */
 .centeredTable th {
   background-color: ForestGreen;
@@ -304,9 +343,9 @@ margin: 0px; {
 .btn {
   display: inline-block;
   font-size: 24px;
-  color: white;
-  box-shadow: 0 9px #999;
-  background-color: rgb(7, 20, 97);
+  color: #F8D098;
+  box-shadow: 0 9px #F8D098;
+  background-color: #003e21;
   border: 2px violet;
   border-radius: 15px;
 }
