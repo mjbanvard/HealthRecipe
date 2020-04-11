@@ -71,6 +71,7 @@ li {
   color: #F8D098;
 }
 
+/* Recipes Search Add navigation links */
 a {
     color: #F8D098;
 }
@@ -165,6 +166,7 @@ margin: 0px; {
    display: block;
    border-radius: 10px;
  }
+
  /*username and password styling*/
  .form-group {
   text-align: center;
@@ -180,7 +182,7 @@ margin: 0px; {
  }
  /*this controls the username and password boxes user types in*/
  .form-control {
-    background-color: white;
+    background-color: #f8D098;
      width: 85%;
      padding: 1.3em;
      border-radius: .5em;
@@ -389,5 +391,10 @@ margin: 0px; {
     border-radius: .5em;
     margin-left:  30px;
     margin-top: 1em;
+}
+
+img {
+    height: 200px;
+    width: auto;
 }
 
