@@ -36,6 +36,7 @@ body {
     'recipe recipe recipe recipe recipe recipe'
     'serve_time serve_time . . servings servings'
     'ingredients ingredients ingredients steps steps steps';
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   background-color: #003e21;
   padding: 50px;
