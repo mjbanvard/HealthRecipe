@@ -3,12 +3,23 @@ package org.launchcode.health_recipe.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
-public class User extends AbstractEntity {
+public class User {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @NotNull
+    @Size(max = 150)
+    private String name;
 
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
     @Size(min=9)
@@ -26,12 +37,21 @@ public class User extends AbstractEntity {
 
     public User() {}
 
-    public User(String name, String email, String username, String password, String access) {
-        super.setName(name);
+    public User(int id, String name, String email, String username, String password, String access) {
+        this.id = id;
+        this.name = name;
         this.email = email;
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.access = access;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -60,5 +80,23 @@ public class User extends AbstractEntity {
 
     public void setAccess(String access) {
         this.access = access;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals( name, user.name ) &&
+                Objects.equals( email, user.email ) &&
+                Objects.equals( username, user.username ) &&
+                Objects.equals( pwHash, user.pwHash ) &&
+                Objects.equals( access, user.access );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( id, name, email, username, pwHash, access );
     }
 }
