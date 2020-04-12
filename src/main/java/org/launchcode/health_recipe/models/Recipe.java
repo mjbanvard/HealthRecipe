@@ -4,11 +4,21 @@ import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-public class Recipe extends AbstractEntity {
+public class Recipe {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @NotNull
+    @Size(max = 150)
+    private String name;
 
     @NotNull (message = "Servings?")
     private String servings;
@@ -22,13 +32,25 @@ public class Recipe extends AbstractEntity {
 
     public Recipe() {}
 
-    public Recipe(String servings, String timeToServe, String stepsToRecipe) {
-        super();
+    public Recipe(int id, String name, String servings, String timeToServe, String stepsToRecipe) {
+        this.id = id;
+        this.name = name;
         this.servings = servings;
         this.serve_time = timeToServe;
         this.steps = stepsToRecipe;
     }
 
+    public String getName() { return name; }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() { return id; }
 
     public String getServings() {
         return servings;
@@ -52,5 +74,22 @@ public class Recipe extends AbstractEntity {
 
     public void setSteps(String steps) {
         this.steps = steps;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return id == recipe.id &&
+                name.equals( recipe.name ) &&
+                Objects.equals( servings, recipe.servings ) &&
+                Objects.equals( serve_time, recipe.serve_time ) &&
+                Objects.equals( steps, recipe.steps );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( id, name, servings, serve_time, steps );
     }
 }
