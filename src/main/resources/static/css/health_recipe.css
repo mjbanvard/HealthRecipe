@@ -3,26 +3,59 @@
 body {
  font-family: 'Montserrat', sans-serif;
  margin: 0;
+ background-color: #003E21;
+ color: #F8D098;
 }
  .body-content {
     margin-top: 4rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 /*the heading Health Recipe*/
 .navbar-brand {
-  margin: 2em;
+  margin: 2em 0 4em 2em;
   font-size: 24px;
   font-weight: bold;
+  color: #F8D098;
 
  /*text under logout button all pages*/
  } .nav p {
    font-weight: bold;
  }
 
+/* list-recipes.html-user selected recipe display*/
+.item1 { grid-area: recipe; }
+.item2 { grid-area: serve_time; }
+.item3 { grid-area: servings; }
+.item4 { grid-area: ingredients; }
+.item5 { grid-area: steps; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'recipe recipe recipe recipe recipe recipe'
+    'serve_time serve_time . . servings servings'
+    'ingredients ingredients ingredients steps steps steps';
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #003e21;
+  padding: 50px;
+  margin-top: 50px;
+}
+
+.grid-container > div {
+  background-color: #067242;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  color: #f8D098;
+}
+
 /*All the headings background on all pages*/
 .container {
- background-color: LightSeaGreen;
+ background-color: #067242;
+ padding: 20px 0;
+ margin: 0 50px 0 50px;
 }
 /*controls only the background on add.html but not headings*/
 .body-content-1 {
@@ -34,8 +67,16 @@ body {
 li {
   display: inline;
   padding: 8px;
+  font-size: 18px;
   font-weight: bold;
+  color: #F8D098;
 }
+
+/* Recipes Search Add navigation links */
+a {
+    color: #F8D098;
+}
+
 /*this is view recipes by category page - All, Recipe, Serve Time, Servings */
 .centeredTable th {
   background-color: ForestGreen;
@@ -114,6 +155,7 @@ margin: 0px; {
   margin-left: 15em;
   margin-right: 2em;
   max-width: 1000px;
+  padding-left: 13em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
@@ -126,24 +168,33 @@ margin: 0px; {
    display: block;
    border-radius: 10px;
  }
+
  /*username and password styling*/
  .form-group {
-  text-align: center;
+    align: center;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+
  }
+
  .form-group label {
-   font-size: 2rem;
-   font-weight: bold;
    margin-bottom: 1em;
-   margin-top: 1.5em;
+   margin-top: 1em;
  }
+
+/*
  .form-group p {
-   font-size: 1.5rem;
+   padding: 1em 0 5em 0;
  }
+ */
+
  /*this controls the username and password boxes user types in*/
  .form-control {
-    background-color: white;
+    background-color: #f8D098;
      width: 85%;
      padding: 1.3em;
+     border: hidden;
      border-radius: .5em;
  }
 
@@ -151,16 +202,15 @@ margin: 0px; {
   I just put borders around cards for now*/
 
 .loginCard-1 {
-   background: Gold; url('/images/avocados.jpg');
+   background: #067242; url('/images/avocados.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 5em;
-    margin: 0;
     border-radius: 10px 100px / 120px;
 }
 .loginCard-2 {
-    background:  Orchid url('/images/vegincircle.jpg');
+    background: #098b54 url('/images/vegincircle.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -169,7 +219,7 @@ margin: 0px; {
     border-radius: 10px 100px / 120px;
 }
 .loginCard-3 {
-    background:  Coral url('/images/glutenfree.jpg');
+    background:  #067242 url('/images/glutenfree.jpg');
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -304,16 +354,17 @@ margin: 0px; {
 .btn {
   display: inline-block;
   font-size: 24px;
-  color: white;
-  box-shadow: 0 9px #999;
-  background-color: rgb(7, 20, 97);
-  border: 2px violet;
+  font-weight: bold;
+  color: #F8D098;
+  box-shadow: 0 9px #F8D098;
+  background-color: #003e21;
+  border: hidden;
   border-radius: 15px;
 }
 /*login button only*/
 .loginbtn {
-  background-color: green;
-  box-shadow: 0 5px #666;
+  background-color: #003e21;
+  box-shadow: 0 5px #F8D098;
   width: 80%;
   padding: 1em;
   border-radius: .5em;
@@ -321,24 +372,23 @@ margin: 0px; {
 }
 /*registration button*/
 .registerbtn {
-   background-color: MediumOrchid;
-   box-shadow: 0 5px RebeccaPurple;
-   width: 80%;
+   background-color: #003e21;
+   box-shadow: 0 5px #F8D098;
+   width: 70%;
    padding: 1em;
    border-radius: .5em;
+   margin-top; 15px;
    margin-left: 5px;
-   color: white;
    text-decoration: none;
 }
 /*go to recipe choices page button*/
 .optionsbtn {
-  background-color: LightSalmon;
-     box-shadow: 0 5px OrangeRed;
-     width: 80%;
+  background-color: #003e21;
+     box-shadow: 0 5px #F8D098;
+     width: 70%;
      padding: 1em;
      border-radius: .5em;
      margin-left: 3px;
-     color: white;
      text-decoration: none;
 }
 /*add recipe button*/
@@ -350,5 +400,10 @@ margin: 0px; {
     border-radius: .5em;
     margin-left:  30px;
     margin-top: 1em;
+}
+
+img {
+    height: 200px;
+    width: auto;
 }
 
