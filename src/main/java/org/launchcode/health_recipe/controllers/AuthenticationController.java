@@ -80,7 +80,7 @@ public class AuthenticationController {
 
         User newUser = new User(registerFormDTO.getName(), registerFormDTO.getEmail(), registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getAccess());
-        newUser.setAccess("2");
+        newUser.setAccess(2);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
@@ -124,7 +124,7 @@ public class AuthenticationController {
         User newUser = new User(registerFormDTO.getName(), registerFormDTO.getEmail(), registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getAccess());
 
-        newUser.setAccess("1");
+        newUser.setAccess(1);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
