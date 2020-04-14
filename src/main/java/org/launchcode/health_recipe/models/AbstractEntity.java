@@ -1,7 +1,5 @@
 package org.launchcode.health_recipe.models;
 
-
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;

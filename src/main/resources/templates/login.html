@@ -4,7 +4,7 @@
 <head th:replace="fragments :: head">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/css/health_recipe.css}" rel="stylesheet" />
+    <link th:href="@{/css/health_recipe.css}" rel="stylesheet"/>
 </head>
 
 <!--<body class="container body-content">-->
@@ -13,15 +13,14 @@
 <div th:replace="fragments :: page-header"></div>
 
 
+<h1>LOGIN -- REGISTER -- GO TO RECIPE CHOICES</h1>
 
-<h1>LOGIN  --  REGISTER -- GO TO RECIPE CHOICES</h1>
+<div class="login-cards">
+    <div class="loginCard-1 card-image-1">
+        <!--                 <img th:src="@{../images/avocados.jpg}" alt="none displayed"/>-->
 
-            <div class="login-cards">
-                <div class="loginCard-1 card-image-1">
-<!--                 <img th:src="@{../images/avocados.jpg}" alt="none displayed"/>-->
-
-          <div class="loginForm">
-<!--              <img th:src="@{../images/avocados.jpg}" alt="none displayed"/>-->
+        <div class="loginForm">
+            <!--              <img th:src="@{../images/avocados.jpg}" alt="none displayed"/>-->
             <form method="post">
                 <div class="form-group">
                     <label th:for="username">Username</label>
@@ -34,24 +33,31 @@
                     <input class="form-control" th:field="${loginFormDTO.password}" type="password"/>
                     <span class="error" th:errors="${loginFormDTO.password}"></span>
                 </div>
-                 <br>
+                <br>
                 <input class="btn btn-primary loginbtn" type="submit" value="Log In"/>
             </form>
-          </div>
-                </div>
-                <div class="loginCard-2">
-          <div class="form-group">
+        </div>
+    </div>
+    <div class="loginCard-2">
+        <div class="form-group">
 
-              <p>Don't have an account? </p><br>
-              <a href="/register" class="btn btn-primary registerbtn">Register For One</a>
-      </div>
-                </div>
-      <div class="loginCard-3">
-    <div class="form-group">
+            <p>Don't Have An Account?     </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="/register" class="btn btn-primary registerbtn">Register</a>
+        </div>
+    </div>
+    <div class="loginCard-3">
+        <div class="form-group">
 
-        <p>Want to just choose options<br>and get recipes<br>without registering or signing in. </p><br>
-        <a href="index" class="btn btn-primary optionsbtn">Click Here.</a>
-        </form>
+            <p>Choose Recipe Options<br>Without Registering or Login </p>
+            <br>
+            <br>
+            <a href="index" class="btn btn-primary optionsbtn">Click Here.</a>
+            </form>
         </div>
     </div>
 </div>
