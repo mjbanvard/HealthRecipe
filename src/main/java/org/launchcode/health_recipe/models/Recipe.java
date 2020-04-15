@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "Recipe")
+@Table(/*name = "recipe"*/)
 public class Recipe {
 
     @Id
@@ -18,7 +19,13 @@ public class Recipe {
 
     @NotNull
     @Size(max = 150)
+//    @OneToMany(mappedBy = "recipeName")
+//    @JoinColumn(referencedColumnName = "recipeName")
     private String name;
+
+    @OneToMany
+    @JoinColumn(/*name = "ingredient" */)
+    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     @NotNull (message = "Servings?")
     private String servings;

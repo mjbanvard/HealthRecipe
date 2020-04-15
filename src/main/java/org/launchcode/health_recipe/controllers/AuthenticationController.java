@@ -78,7 +78,7 @@ public class AuthenticationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getName(), registerFormDTO.getEmail(), registerFormDTO.getUsername(),
+        User newUser = new User(registerFormDTO.getEmail(), registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getAccess());
         newUser.setAccess("2");
         userRepository.save(newUser);
@@ -121,9 +121,9 @@ public class AuthenticationController {
             return "adminregister";
         }
 
-        User newUser = new User(registerFormDTO.getName(), registerFormDTO.getEmail(), registerFormDTO.getUsername(),
+        User newUser = new User(registerFormDTO.getEmail(), registerFormDTO.getUsername(),
                 registerFormDTO.getPassword(), registerFormDTO.getAccess());
-
+//  Removed getName. In AbstractEntity, I have commented out name
         newUser.setAccess("1");
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
