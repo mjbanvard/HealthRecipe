@@ -4,34 +4,39 @@
     <meta charset="UTF-8"/>
     <title>Health Recipes</title>
 
+<!--    <link th:href="@{/css/health_recipe.css}" rel="stylesheet"/>-->
     <link th:href="@{/css/health_recipe.css}" rel="stylesheet"/>
+
 
     <title th:text="'health_recipe' + ${title == null ? '' : ' :: ' + title}">Health Recipe</title>
 </head>
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">Health Recipe</a>
-            <ul class="nav" style="float:right;">
-                <li class="nav-item"><a class="nav-link" href="/logout">
-                    <button type="button" class="btn btn-primary btn-lg">Log out</button>
-                </a></li>
-                <!--                <p>logging out will<br>return to login page</p>-->
+<div th:fragment="page-header" class="site-content">
+        <section class="nav-scope">
+            <ul class="nav-section">
+                <li class="nav-logo">
+                    <a th:href="@{/}" aria-label="Health Recipe">Health Recipe
+                    </a>
+                    <a th:href="@{/logout}">
+                        <button type="button" class="nav-btn btn-primary btn-lg" style="float:right;">LogOut</button>
+                    </a>
+                </li>
+                <div class="nav-links">
+                    <li class="nav-recipes">
+                        <a th:href="@{/list}">Recipes</a>
+                    </li>
+                    <li class="nav-search">
+                        <a th:href="@{/search}">Search</a>
+                    </li>
+                    <li class="nav-add">
+                        <a th:href="@{/add}">Add Recipes</a>
+                    </li>
+                </div>
             </ul>
-        </div>
+        </section>
 
-        <div class="navbar-nav">
-            <ul class="navbar-nav">
-                <li><a th:href="@{/list}" class="navbar-nav">Recipes</a></li>
-                <li><a th:href="@{/search}">Search</a></li>
-                <li><a th:href="@{/add}">Add Recipes</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 </div>
 
 </body>

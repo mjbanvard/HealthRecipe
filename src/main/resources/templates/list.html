@@ -7,41 +7,52 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-    <h2 class = "centered">View Recipes By Category</h2>
+    <h2>View Recipes By Category</h2>
 </div>
 
-<table class="centeredTable">
-    <tr>
-        <th>All</th>
-        <th>Recipe</th>
-        <th>Serve_Time</th>
-        <th>Servings</th>
-    </tr>
+<div class="container recipe-a">
+    <div class="col1 recipe-a" th:each="recipe : ${recipes}">
+        <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>
+    </div>
+    <div class="col1 recipe-b">
+        This is col1 recipe-b
+    </div>
+    <div class="col1 recipe-c">This is col1 recipe-c</div>
+    <div class="col2 recipe-d">
+        This is col2 recipe-d
+    </div>
+</div>
+<!--<table class="centeredTable">-->
+<!--    <tr>-->
+<!--        <th>All</th>-->
+<!--        <th>Recipe</th>-->
+<!--        <th>Serve_Time</th>-->
+<!--        <th>Servings</th>-->
+<!--    </tr>-->
 
-    <tr>
-        <td>
-            <li>
-                <a th:href="@{/list/recipes(column='All',value='View All')}">View All</a>
-            </li>
-        </td>
-        <td>
-            <li th:each="recipe : ${recipes}">
-                <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>
-            </li>
-        </td>
-        <td>
-            <li th:each="recipe : ${recipes}">
-                <a th:href="@{/list/recipes(column=serve_time,value=${recipe.serve_time})}" th:text="${recipe.serve_time}"></a>
-            </li>
-        </td>
-        <td>
-            <li th:each="recipe : ${recipes}">
-                <a th:href="@{/list/recipes(column=servings,value=${recipe.servings})}" th:text="${recipe.servings}"></a>
-            </li>
-        </td>
-    </tr>
-</table>
+<!--    <tr>-->
+<!--        <td>-->
+<!--            <li>-->
+<!--                <a th:href="@{/list/recipes(column='All',value='View All')}">View All</a>-->
+<!--            </li>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <li th:each="recipe : ${recipes}">-->
+<!--                <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>-->
+<!--            </li>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <li th:each="recipe : ${recipes}">-->
+<!--                <a th:href="@{/list/recipes(column=serve_time,value=${recipe.serve_time})}" th:text="${recipe.serve_time}"></a>-->
+<!--            </li>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <li th:each="recipe : ${recipes}">-->
+<!--                <a th:href="@{/list/recipes(column=servings,value=${recipe.servings})}" th:text="${recipe.servings}"></a>-->
+<!--            </li>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
 
 <div class="container mt-5">
      <ul class="pagination justify-content-center">
