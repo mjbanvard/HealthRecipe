@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class AddRecipeController {
 
@@ -23,7 +25,7 @@ public class AddRecipeController {
     private IngredientRepository ingredientRepository;
 
     @GetMapping("add")
-    public String displayAddRedipeForm(Model model) {
+    public String displayAddRecipeForm(Model model) {
         model.addAttribute("title", "Add Recipe");
         model.addAttribute("recipe", recipeRepository.findAll());
         model.addAttribute("ingredient", ingredientRepository.findAll());
@@ -33,7 +35,7 @@ public class AddRecipeController {
     }
 
     @PostMapping("add")
-    public String processAddRecipeForm(@ModelAttribute Recipe newRecipe,
+    public String processAddRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
                                        Errors errors, Model model){
 
         if (errors.hasErrors()) {

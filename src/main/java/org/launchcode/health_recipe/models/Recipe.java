@@ -1,22 +1,19 @@
 package org.launchcode.health_recipe.models;
 
-import org.springframework.context.annotation.Primary;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Recipe extends AbstractEntity {
 
-    @NotNull (message = "Servings?")
+    @NotBlank(message = "Servings?")
     private String servings;
 
-    @NotNull (message = "Serve time?")
+    @NotBlank (message = "Serve time?")
     private String serve_time;
 
-    @NotNull (message = "Recipe steps?")
+    @NotBlank (message = "Recipe steps?")
     @Column(length=15500)
     private String steps;
 
