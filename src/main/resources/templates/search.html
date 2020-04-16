@@ -27,8 +27,8 @@
         </p>
 
         <p>
-            <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <label for="searchTerms">Keyword(s):</label>
+            <input type="text" name="searchTerms" id="searchTerms" />
         </p>
 
         <input type="submit" value="Search" />
@@ -36,21 +36,22 @@
 
     <hr />
 
-
-    <table class="recipe-listing">
-        <tr th:each="recipe : ${recipes}">
-            <td>
-                <p>
-                    Recipe Id:
-                    <a th:href="@{'/view/' + ${recipe.id}}" th:text="${recipe.id}"></a>
-                </p>
-                <p th:text="${'Name: ' + recipe.name}"></p>
-                <p th:text="${'Time: ' + recipe.serve_time}"></p>
-                <p th:text="${'Servings: ' + recipe.servings}"></p>
-                <p th:text="${'Steps: ' + recipe.steps}"></p>
-            </td>
-        </tr>
-    </table>
+<!--Remove ID: from line 42 before final deployment; is currently being used for referencing recipe IDs-->
+    <div class="grid-container" th:each="recipe : ${recipes}">
+        <div class="item1">
+            <p th:text="${recipe.name + ' | ID: ' + recipe.id}"></p>
+        </div>
+        <div class="item2">Total Time
+            <p th:text="${recipe.serve_time}"></p>
+        </div>
+        <div class="item3">Servings
+            <p th:text="${recipe.servings}"></p>
+        </div>
+        <div class="item4">Ingredients</div>
+        <div class="item5">Directions
+            <p th:text="${recipe.steps}"></p>
+        </div>
+    </div>
 
 </div>
 

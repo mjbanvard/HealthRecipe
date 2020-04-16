@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.launchcode.health_recipe.models.RecipeData;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -46,14 +47,15 @@ public class RecipeController {
 
 
     @RequestMapping(value = "recipes")
-    public String listRecipeByChoice(Model model, @RequestParam String column, @RequestParam String value) {
+    public String listRecipeByChoice(Model model, @RequestParam String column,
+                                     @RequestParam ArrayList<String> value) {
         Iterable<Recipe> recipes;
         if (column.toLowerCase().equals("all")){
             recipes = recipeRepository.findAll();
             model.addAttribute("title", "All Recipes");
         } else {
             recipes = RecipeData.findByColumnAndValue(column, value, recipeRepository.findAll());
-            model.addAttribute("title", "Recipe Choice: "  + value);
+            model.addAttribute("title", "Recipe Choice");
         }
         model.addAttribute("recipes", recipes);
 
