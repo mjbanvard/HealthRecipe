@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+
 import static org.launchcode.health_recipe.controllers.RecipeController.columnChoices;
 
 @Controller
@@ -38,15 +41,22 @@ public class SearchController {
 //    }
 
     @PostMapping("results")
-    public String displaySearchResults(Model model, @RequestParam String searchTerm) {
+    public String displaySearchResults(Model model, @RequestParam ArrayList<String> searchTerms) {
+
         Iterable<Recipe> recipes;
-        if (searchTerm.toLowerCase().equals("")){
+        if (searchTerms.isEmpty() || searchTerms.contains("all".toLowerCase())) {
             recipes = recipeRepository.findAll();
         } else {
-            recipes = RecipeData.findByValue(searchTerm, recipeRepository.findAll());
+            recipes = RecipeData.findByValue(searchTerms, recipeRepository.findAll());
         }
 
-        model.addAttribute("title", "Recipe Names Containing '" + searchTerm.toLowerCase() + "'");
+        model.addAttribute("title",
+                "Recipe Names Containing '"
+                        + searchTerms.toString()
+                        .replace("[", "")
+                        .replace("]", "")
+                        .toLowerCase()
+                        + "'");
         model.addAttribute("recipes", recipes);
 
         return "search";
