@@ -41,34 +41,64 @@ public class RecipeData {
      * with "Healthified Broccoli Cheddar Soup".
      *
      * @param column Recipe field that should be searched.
-     * @param value Value of the field to search for.
+     * @param allValues Values of the field to search for.
      * @param allRecipes The list of recipes to search.
      * @return List of all recipes matching the criteria.
      */
-    public static ArrayList<Recipe> findByColumnAndValue(String column, String value, Iterable<Recipe> allRecipes) {
+    public static ArrayList<Recipe> findByColumnAndValue(String column, ArrayList<String> allValues,
+                                                         Iterable<Recipe> allRecipes) {
 
         ArrayList<Recipe> results = new ArrayList<>();
 
-        if (value.toLowerCase().equals("all")){
+        if (allValues.contains("all".toLowerCase())) {
             return (ArrayList<Recipe>) allRecipes;
         }
 
         if (column.equals("all")){
-            results = findByValue(value, allRecipes);
+            results = findByValue(allValues, allRecipes);
             return results;
         }
+
         for (Recipe recipe : allRecipes) {
+            for (String value : allValues) {
+                String aValue = getFieldValue(recipe, column);
 
-            String aValue = getFieldValue(recipe, column);
-
-            if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
-                results.add(recipe);
+                if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+                    results.add(recipe);
+                }
             }
         }
 
         return results;
 
     }
+
+
+    /* old method */
+//    public static ArrayList<Recipe> findByColumnAndValue(String column, String value, Iterable<Recipe> allRecipes) {
+//
+//        ArrayList<Recipe> results = new ArrayList<>();
+//
+//        if (value.toLowerCase().equals("all")){
+//            return (ArrayList<Recipe>) allRecipes;
+//        }
+//
+//        if (column.equals("all")){
+//            results = findByValue(value, allRecipes);
+//            return results;
+//        }
+//        for (Recipe recipe : allRecipes) {
+//
+//            String aValue = getFieldValue(recipe, column);
+//
+//            if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
+//                results.add(recipe);
+//            }
+//        }
+//
+//        return results;
+//
+//    }
 
     public static String getFieldValue(Recipe recipe, String fieldName){
         String theValue;
@@ -84,21 +114,40 @@ public class RecipeData {
     /**
      * Search all Recipe fields for the given term.
      *
-     * @param value The search term to look for.
+     * @param allValues The search terms to look for.
      * @param allRecipes The list of recipes to search.
      * @return      List of all recipes with at least one field containing the value.
      */
-    public static ArrayList<Recipe> findByValue(String value, Iterable<Recipe> allRecipes) {
+    public static ArrayList<Recipe> findByValue(ArrayList<String> allValues, Iterable<Recipe> allRecipes) {
 
         ArrayList<Recipe> results = new ArrayList<>();
 
         for (Recipe recipe : allRecipes) {
-            if (recipe.getName().toLowerCase().contains(value.toLowerCase())) {
-                results.add(recipe);
-            } else if (recipe.toString().toLowerCase().contains(value.toLowerCase())) {
-                results.add(recipe);
+            for (String value : allValues) {
+                if (recipe.getName().toLowerCase().contains(value.toLowerCase())) {
+                    results.add(recipe);
+                } else if (recipe.toString().toLowerCase().contains(value.toLowerCase())) {
+                    results.add(recipe);
+                }
             }
         }
         return results;
     }
+
+
+    /* old method */
+//    public static ArrayList<Recipe> findByValue(String value, Iterable<Recipe> allRecipes) {
+//
+//        ArrayList<Recipe> results = new ArrayList<>();
+//
+//        for (Recipe recipe : allRecipes) {
+//            if (recipe.getName().toLowerCase().contains(value.toLowerCase())) {
+//                results.add(recipe);
+//            } else if (recipe.toString().toLowerCase().contains(value.toLowerCase())) {
+//                results.add(recipe);
+//            }
+//        }
+//        return results;
+//    }
+
 }
