@@ -1,27 +1,82 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
-body {
- font-family: 'Montserrat', sans-serif;
- margin: 0;
- background-color: #003E21;
- color: #F8D098;
+article,aside,details,figcaption,figure,header,hgroup,main,nav,section,summary {
+    display: block
 }
- .body-content {
-    margin-top: 4rem;
-    text-align: center;
-    font-size: 2.5rem;
-}
-/*the heading Health Recipe*/
-.navbar-brand {
-  margin: 2em 0 4em 2em;
-  font-size: 24px;
-  font-weight: bold;
-  color: #F8D098;
 
- /*text under logout button all pages*/
- } .nav p {
-   font-weight: bold;
- }
+html {
+    font-family: sans-serif
+}
+
+body {
+    background-color: #003e21;
+    font-size: 16px;
+    font-size: 1rem;
+    color: #f8d098;
+    font-family: Montserrat;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-decoration: none
+}
+
+ol,ul {
+    list-style: 0;
+    margin: 0;
+    padding: 0
+}
+
+.site-content {
+    margin: 0 auto;
+    max-width: 1270px;
+    position: relative
+}
+
+.nav-section {
+    background-color: #098b54;
+    overflow: hidden
+}
+
+/* Health Recipe navigation */
+.nav-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #F8D098;
+    padding: 2px 0 10px 10px
+}
+
+/* Health Recipe navigation */
+.nav-logo a {
+    color: #f8d098;
+    text-decoration: none
+}
+
+/* Recipes, Search, Add Recipe navigation */
+.nav-links li{
+    color: #f8D098;
+    display: inline;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 2px 0 10px 14px
+}
+
+/* Recipes, Search, Add Recipe navigation */
+.nav-links a {
+    color: #f8d098;
+    text-decoration: none
+}
+
+.nav-btn {
+    background-color: #003e21;
+    border: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px #f8d098;
+    color: #f8d098;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 /* list-recipes.html-user selected recipe display*/
 .item1 { grid-area: recipe; }
@@ -36,45 +91,19 @@ body {
     'recipe recipe recipe recipe recipe recipe'
     'serve_time serve_time . . servings servings'
     'ingredients ingredients ingredients steps steps steps';
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
   background-color: #003e21;
-  padding: 50px;
-  margin-top: 50px;
+  margin: 4em auto;
+  max-width: 1270px
 }
 
 .grid-container > div {
   background-color: #067242;
   text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+  /*padding: 20px 0;*/
+  font-size: 1.5em;
   color: #f8D098;
-}
-
-/*All the headings background on all pages*/
-.container {
- background-color: #067242;
- padding: 20px 0;
- margin: 0 50px 0 50px;
-}
-/*controls only the background on add.html but not headings*/
-.body-content-1 {
-  background: url('../images/ingredientstwo.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-/*this controls the logout button on all pages*/
-li {
-  display: inline;
-  padding: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #F8D098;
-}
-
-/* Recipes Search Add navigation links */
-a {
-    color: #F8D098;
 }
 
 /*this is view recipes by category page - All, Recipe, Serve Time, Servings */
@@ -90,7 +119,10 @@ h1 {
   margin-bottom: 2em;
   font-weight; bold;
   font-size: 3rem;
+}
 
+h2 {
+    text-align: center
 }
 
 td, th {
@@ -147,15 +179,11 @@ div.job-listing {
     width: 80%;
     background-color: #e4e4e4;
 }
-/*login page css*/
-margin: 0px; {
-}
+
 /*login page styling*/
 .login-cards {
-  margin-left: 15em;
-  margin-right: 2em;
+    margin: 4em auto;
   max-width: 1000px;
-  padding-left: 13em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
@@ -182,12 +210,6 @@ margin: 0px; {
    margin-bottom: 1em;
    margin-top: 1em;
  }
-
-/*
- .form-group p {
-   padding: 1em 0 5em 0;
- }
- */
 
  /*this controls the username and password boxes user types in*/
  .form-control {
@@ -230,16 +252,13 @@ margin: 0px; {
 
 /*checkboxes layout*/
 .checkbox-cards {
-  margin-left: 2em;
-  margin-right: 2em;
-  max-width: 1480px;
-  display: grid;
-  /*grid-template-columns: repeat(4, 25vmin);*/
-   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /*grid-template-columns: repeat(3, 1fr);*/
-  grid-gap: 1em;
-  font-weight: bold;
-  height: 600px;
+    margin: auto;
+    max-width: 1270px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1em;
+    font-weight: bold;
+    height: 500px;
 }
 .checkbox-cards p {
   text-align: center;
@@ -248,10 +267,7 @@ margin: 0px; {
   font-size: 1.2rem;
 
 }
-/*.card-image {
-  width: 100%;
-  display: block;
-}*/
+
 /*styling for each card on choices page, includes images*/
 .card-1 {
   background: url('../images/strawberries.jpg');
@@ -261,7 +277,6 @@ margin: 0px; {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     padding: 0;
     margin: 0;
-    height:600px;
 
 }
 .card-2 {
@@ -306,61 +321,42 @@ margin: 0px; {
 .card-4 p {
  color: DarkBlue;
 }
-/*.card {
-  margin: 20px 0 0 0;
-  padding: 0;
-  display: block;
-  width: auto;
-}*/
 
 .card-image {
    width: 100%;
    position: relative;
    display: block;
    border-radius: 10px;
-  /* -webkit-transition: 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-   -moz-transition: 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
-   transition: 0.3s ease-in-out, transform 0.3s ease-in-out;*/
 }
-/*.card-image:hover {
-  transform: scale(1.05);
-}*/
-/*.card:after {
- clear: both;
-}
-.card:after, card-image:before {
-  content: "";
-  display: table;
-}*/
 
 .card-content {
-  margin-top: 7em;
+  margin-top: 4em;
   line-height: 2em;
   font-size: 1.0rem;
-  background: aqua;
+  background: #098b54;
   grid-template-row: 4/6;
 
   }
   /*footer and buttons; not button for logout. this is on recipes choices page*/
   .footer {
-     position: fixed;
-     left: 0;
-     bottom: 0;
-     height: 5em;
-     width: 100%;
-     background-color: LightGreen;
+     background-color: #098b54;
+     height: 3em;
+     margin: 2em auto;
+     width: 1270px;
      text-align: center;
   }
 .btn {
-  display: inline-block;
-  font-size: 24px;
-  font-weight: bold;
-  color: #F8D098;
-  box-shadow: 0 9px #F8D098;
-  background-color: #003e21;
-  border: hidden;
-  border-radius: 15px;
+    color: #F8D098;
+    background-color: #003e21;
+    border: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px #f8d098;
+    display: inline-block;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: bold;
 }
+
 /*login button only*/
 .loginbtn {
   background-color: #003e21;
@@ -400,6 +396,51 @@ margin: 0px; {
     border-radius: .5em;
     margin-left:  30px;
     margin-top: 1em;
+}
+
+/* list.html CSS Grid */
+.list-container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 2em auto;
+    width: 1270px;
+   }
+
+.list-container > div {
+  background-color: #067242;
+  color: #f8D098;
+  text-align: center;
+  font-size: 125%;
+}
+
+.list-context {
+    font-size: 75%;
+}
+
+a, li {
+    color: #f8d098;
+}
+
+.pagination {
+    clear:both;
+    position:relative;
+    font-size:12px;
+    text-align:center;
+}
+
+.pagination li, .pagination a {
+    display:inline-block;
+    margin: 2px 2px 2px 0;
+    padding:6px 9px 5px 9px;
+    text-decoration:none;
+    background: #098b54;
+}
+
+.pagination .current{
+    padding:6px 9px 5px 9px;
+    font-weight: bold;
+    background: #0950E8;
 }
 
 img {
