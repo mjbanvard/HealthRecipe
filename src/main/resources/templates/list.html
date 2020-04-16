@@ -2,66 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
+
 <body>
 
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <h2>VIEW RECIPES BY CATEGORY</h2>
+    <h2>VIEW RECIPES</h2>
 </div>
 
-<div class="container recipe-a">
-    <div class="col1 recipe-a" th:each="recipe : ${recipes}">
+<div class="list-container">
+    <div class="list1">
+        <a th:href="@{/list/recipes(column='All',value='View All')}">View All</a>
+    </div>
+    <div class="list2" th:each="recipe : ${recipes}">
         <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>
-    </div>
-    <div class="col1 recipe-b">
-        This is col1 recipe-b
-    </div>
-    <div class="col1 recipe-c">This is col1 recipe-c</div>
-    <div class="col2 recipe-d">
-        This is col2 recipe-d
+        <div class="list-context">
+            <p th:text="${'Serve Time: ' + recipe.serve_time}"></p>
+            <p th:text="${'Servings: ' + recipe.servings}"></p>
+        </div>
     </div>
 </div>
-<!--<table class="centeredTable">-->
-<!--    <tr>-->
-<!--        <th>All</th>-->
-<!--        <th>Recipe</th>-->
-<!--        <th>Serve_Time</th>-->
-<!--        <th>Servings</th>-->
-<!--    </tr>-->
 
-<!--    <tr>-->
-<!--        <td>-->
-<!--            <li>-->
-<!--                <a th:href="@{/list/recipes(column='All',value='View All')}">View All</a>-->
-<!--            </li>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <li th:each="recipe : ${recipes}">-->
-<!--                <a th:href="@{/list/recipes(column=name,value=${recipe.name})}" th:text="${recipe.name}"></a>-->
-<!--            </li>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <li th:each="recipe : ${recipes}">-->
-<!--                <a th:href="@{/list/recipes(column=serve_time,value=${recipe.serve_time})}" th:text="${recipe.serve_time}"></a>-->
-<!--            </li>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <li th:each="recipe : ${recipes}">-->
-<!--                <a th:href="@{/list/recipes(column=servings,value=${recipe.servings})}" th:text="${recipe.servings}"></a>-->
-<!--            </li>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--</table>-->
-
-<div class="container mt-5">
-     <ul class="pagination justify-content-center">
-         <li class="page-item" >
-         <li class="page-item"><a class="page-link" href="?page=0">1</a></li>
-         <li class="page-item"><a class="page-link" href="?page=1">2</a></li>
-         <li class="page-item"><a class="page-link" href="?page=2">3</a></li>
-         <li class="page-item"><a class="page-link" href="?page=3">4</a></li>
-         <li class="page-item"><a class="page-link" href="?page=4">5</a></li>
+<div class="navigation">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="?page=0">1</a></li>
+        <li class="page-item"><a class="page-link" href="?page=1">2</a></li>
+        <li class="page-item"><a class="page-link" href="?page=2">3</a></li>
+        <li class="page-item"><a class="page-link" href="?page=3">4</a></li>
+        <li class="page-item"><a class="page-link" href="?page=4">5</a></li>
     </ul>
 </div>
 

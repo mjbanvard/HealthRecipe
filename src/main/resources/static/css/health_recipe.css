@@ -398,6 +398,51 @@ div.job-listing {
     margin-top: 1em;
 }
 
+/* list.html CSS Grid */
+.list-container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 2em auto;
+    width: 1270px;
+   }
+
+.list-container > div {
+  background-color: #067242;
+  color: #f8D098;
+  text-align: center;
+  font-size: 125%;
+}
+
+.list-context {
+    font-size: 75%;
+}
+
+a, li {
+    color: #f8d098;
+}
+
+.pagination {
+    clear:both;
+    position:relative;
+    font-size:12px;
+    text-align:center;
+}
+
+.pagination li, .pagination a {
+    display:inline-block;
+    margin: 2px 2px 2px 0;
+    padding:6px 9px 5px 9px;
+    text-decoration:none;
+    background: #098b54;
+}
+
+.pagination .current{
+    padding:6px 9px 5px 9px;
+    font-weight: bold;
+    background: #0950E8;
+}
+
 img {
     height: 200px;
     width: auto;
