@@ -95,7 +95,10 @@ ol,ul {
   grid-gap: 10px;
   background-color: #003e21;
   margin: 4em auto;
-  max-width: 1270px
+  max-width: 1270px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f8d098;
 }
 
 .grid-container > div {
@@ -106,10 +109,11 @@ ol,ul {
   color: #f8D098;
 }
 
-/*this is view recipes by category page - All, Recipe, Serve Time, Servings */
+/*this is view recipes by category page - All, Recipe, Serve Time, Servings
 .centeredTable th {
   background-color: ForestGreen;
 }
+*/
 
 /*may be only Add Recipe on add.html and possibly Username and Password*/
 h1 {
@@ -125,6 +129,7 @@ h2 {
     text-align: center
 }
 
+/*
 td, th {
     padding: 10px;
 }
@@ -159,12 +164,22 @@ table.job-listing td:first-child {
 table.job-listing td:last-child {
     width: 80%;
 }
+*/
 
-label {
-    display: block;
-    margin-left: 5px;
+.search-container {
+    position:relative;
+    font-size:18px;
+    text-align:center;
 }
 
+.search-container label, .search-container input {
+    display:inline-block;
+    margin: 4px 2px 2px 0;
+    padding:6px 9px 5px 9px;
+    text-decoration:none;
+    background: #098b54;
+}
+/*
 .centered {
     text-align: center;
 }
@@ -179,25 +194,49 @@ div.job-listing {
     width: 80%;
     background-color: #e4e4e4;
 }
-
+*/
 /*login page styling*/
 .login-cards {
     margin: 4em auto;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1em;
-  font-weight: bold;
-  height: 600px;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1em;
+    font-weight: bold;
+    height: 600px;
 }
-.card-image-1 {
-   width: 100%;
-   position: relative;
-   display: block;
-   border-radius: 10px;
- }
 
- /*username and password styling*/
+/*cards on login page; pictures are not displaying at this time - don't know why.
+  I just put borders around cards for now*/
+
+.loginCard-1 {
+    background: url('../login/images/avocados.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    border-radius: 10px 100px / 120px;
+}
+.loginCard-2 {
+    background: url('../login/images/vegincircle.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    margin: 0;
+    border-radius: 10px 100px / 120px;
+}
+.loginCard-3 {
+    background: url('../login/images/glutenfree.jpg');
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+    margin: 0;
+    border-radius: 10px 100px / 120px;
+}
+
+/*username and password styling*/
  .form-group {
     align: center;
     text-align: center;
@@ -219,36 +258,6 @@ div.job-listing {
      border: hidden;
      border-radius: .5em;
  }
-
-/*cards on login page; pictures are not displaying at this time - don't know why.
-  I just put borders around cards for now*/
-
-.loginCard-1 {
-   background: #067242; url('/images/avocados.jpg');
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 5em;
-    border-radius: 10px 100px / 120px;
-}
-.loginCard-2 {
-    background: #098b54 url('/images/vegincircle.jpg');
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 5em;
-    margin: 0;
-    border-radius: 10px 100px / 120px;
-}
-.loginCard-3 {
-    background:  #067242 url('/images/glutenfree.jpg');
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 5em;
-    margin: 0;
-    border-radius: 10px 100px / 120px;
-}
 
 /*checkboxes layout*/
 .checkbox-cards {
@@ -405,6 +414,7 @@ div.job-listing {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     margin: 2em auto;
     width: 1270px;
+
    }
 
 .list-container > div {
@@ -412,6 +422,9 @@ div.job-listing {
   color: #f8D098;
   text-align: center;
   font-size: 125%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f8d098;
 }
 
 .list-context {
