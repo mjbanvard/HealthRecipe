@@ -43,7 +43,7 @@ public class IngredientController {
             return "ingredient/add";
         }
 
-//        model.addAttribute("ingredients", newIngredient);
+        model.addAttribute("title", "Add Ingredient");
         ingredientRepository.save(newIngredient);
         return "redirect:../";
     }
