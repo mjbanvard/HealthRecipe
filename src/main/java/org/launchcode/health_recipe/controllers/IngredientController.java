@@ -12,23 +12,27 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("ingredients")
+@RequestMapping(value = "/ingredient")
 public class IngredientController {
 
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    private Ingredient ingredient;
+
     @GetMapping
     public String displayAllIngredients(Model model) {
         model.addAttribute("title", "All Ingredients");
         model.addAttribute("ingredients", ingredientRepository.findAll());
-        return "ingredients/index";
+        return "ingredient/index";
     }
 
     @GetMapping("add")
     public String displayAddIngredientForm(Model model) {
+        model.addAttribute("title", "Add Ingredient");
         model.addAttribute(new Ingredient());
-        return "ingredients/add";
+        return "ingredient/add";
+
     }
 
     @PostMapping("add")
@@ -36,11 +40,12 @@ public class IngredientController {
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            return "ingredients/add";
+            return "ingredient/add";
         }
 
+//        model.addAttribute("ingredients", newIngredient);
         ingredientRepository.save(newIngredient);
-        return "redirect:";
+        return "redirect:../";
     }
 
     @GetMapping("view/{ingredientId}")

@@ -21,22 +21,16 @@ public class AddRecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
 
-//    @Autowired
-//    private IngredientRepository ingredientRepository;
 
     @GetMapping("add")
     public String displayAddRecipeForm(Model model) {
         model.addAttribute("title", "Add Recipe");
-//        model.addAttribute("recipe", recipeRepository.findAll());
-//        model.addAttribute("ingredient", ingredientRepository.findAll());
         model.addAttribute(new Recipe());
-//        model.addAttribute(new Ingredient());
         return "add";
     }
 
     @PostMapping("add")
     public String processAddRecipeForm(@ModelAttribute @Valid Recipe newRecipe,
-//                                       @ModelAttribute @Valid Ingredient newIngredient,
                                        Errors errors, Model model){
 
         if (errors.hasErrors()) {
@@ -45,9 +39,7 @@ public class AddRecipeController {
         }
 
         recipeRepository.save(newRecipe);
-//        ingredientRepository.save(newIngredient);
-//        return "redirect:";
-        return "ingredient/add";
+        return "redirect:./ingredient/add";
     }
 
 }
