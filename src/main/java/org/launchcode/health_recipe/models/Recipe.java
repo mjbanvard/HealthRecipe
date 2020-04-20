@@ -8,6 +8,9 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Recipe {
@@ -18,7 +21,15 @@ public class Recipe {
 
     @NotNull
     @Size(max = 150)
+//    @OneToMany(mappedBy ="name")
     private String name;
+
+    @OneToMany(mappedBy = "ingredient")
+    private Set<Ingredient> getIngredient;
+
+//    @OneToMany(orphanRemoval=true)
+//    @JoinColumn(name="ingredient") // join column is in table for Ingredient
+//    public Set<Ingredient> getIngredient() {return ingredient;}
 
     @NotNull (message = "Servings?")
     private String servings;

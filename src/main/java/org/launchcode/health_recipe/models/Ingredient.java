@@ -17,11 +17,17 @@ public class Ingredient {
 
     @NotNull
     @Size(max = 150)
+//    @ManyToOne()
     private String name;
 
     @NotBlank(message = "Please provide Recipe ingredient.")
     @Size(min = 3,max = 255, message = "Ingredient must be only 3-255 characters.  Please try again.")
-    private String ingredient;
+    @JoinColumn()
+    public String ingredient;
+
+//    @ManyToOne
+//    @JoinColumn(/*name="recipe_name",*/ nullable=false)
+//    protected Recipe recipe;
 
     @Override
     public String toString() {
