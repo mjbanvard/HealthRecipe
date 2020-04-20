@@ -1,8 +1,5 @@
 package org.launchcode.health_recipe.models;
 
-import org.apache.logging.log4j.util.ReadOnlyStringMap;
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,30 +17,27 @@ public class Ingredient {
 
     @NotNull
     @Size(max = 150)
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "name")
-    private String recipeName;
-
-//    @NaturalId
-//    private int recipeId;
+//    @ManyToOne()
+    private String name;
 
     @NotBlank(message = "Please provide Recipe ingredient.")
     @Size(min = 3,max = 255, message = "Ingredient must be only 3-255 characters.  Please try again.")
-    @JoinColumn (referencedColumnName = "ingredient")
-//    @ManyToOne (fetch = FetchType.LAZY)
-    private String ingredient;
+    @JoinColumn()
+    public String ingredient;
+
+//    @ManyToOne
+//    @JoinColumn(/*name="recipe_name",*/ nullable=false)
+//    protected Recipe recipe;
 
     @Override
     public String toString() {
-        return ingredient;
+        return name;
     }
 
-    public Ingredient(int id, String recipeName, String ingredient){
-// Adjusted items and added recipe.Id, as ints are better for foreign keys than Strings
+    public Ingredient(int id, String name, String ingredient){
 
         this.id = id;
-        this.recipeName = recipeName;
-//        this.recipeId = recipe.id;
+        this.name = name;
         this.ingredient = ingredient;
     }
 
@@ -56,11 +50,11 @@ public class Ingredient {
     }
 
     public String getName() {
-        return recipeName;
+        return name;
     }
 
     public void setName(String name) {
-        this.recipeName = name;
+        this.name = name;
     }
 
     public Ingredient() {}
@@ -79,12 +73,12 @@ public class Ingredient {
         if (o == null || getClass() != o.getClass()) return false;
         Ingredient that = (Ingredient) o;
         return id == that.id &&
-                recipeName.equals( that.recipeName ) &&
+                name.equals( that.name ) &&
                 ingredient.equals( that.ingredient );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( id, recipeName, ingredient );
+        return Objects.hash( id, name, ingredient );
     }
 }

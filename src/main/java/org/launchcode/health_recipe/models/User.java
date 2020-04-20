@@ -37,21 +37,22 @@ public class User extends AbstractEntity{
 
     public User() {}
 
-    public User(String email, String username, String password, String access) {
-        super();
+    public User(/*int id, */String name, String email, String username, String password, String access) {
+//        super.id = id;
+        super.setName( "name" );
         this.email = email;
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.access = access;
     }
 
-    public int getUserId() {
-        return id;
+    public int getId() {
+        return super.getId();
     }
 
-    public void setUserId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        super.id = id;
+//    }
 
     public String getUsername() {
         return username;
@@ -85,10 +86,9 @@ public class User extends AbstractEntity{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals( o )) return false;
         User user = (User) o;
-        return id == user.id &&
-                Objects.equals( id, user.id ) &&
-                Objects.equals( email, user.email ) &&
+        return Objects.equals( email, user.email ) &&
                 Objects.equals( username, user.username ) &&
                 Objects.equals( pwHash, user.pwHash ) &&
                 Objects.equals( access, user.access );
@@ -96,6 +96,6 @@ public class User extends AbstractEntity{
 
     @Override
     public int hashCode() {
-        return Objects.hash( id, email, username, pwHash, access );
+        return Objects.hash( super.hashCode(), email, username, pwHash, access );
     }
 }
