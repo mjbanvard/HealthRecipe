@@ -37,7 +37,7 @@ public class RecipeController {
         columnChoices.put("all", "All");
     }
 
-    @RequestMapping("")
+    @RequestMapping("/list")
     public String list(Model model, Pageable page) {
         Page<Recipe> recipes;
         model.addAttribute("recipes", recipeData.findAllByPage(page));
