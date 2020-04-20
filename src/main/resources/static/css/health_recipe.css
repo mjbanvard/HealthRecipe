@@ -22,7 +22,6 @@ body {
 }
 
 ol,ul {
-    list-style: 0;
     margin: 0;
     padding: 0
 }
@@ -346,6 +345,7 @@ div.job-listing {
   grid-template-row: 4/6;
 
   }
+
   /*footer and buttons; not button for logout. this is on recipes choices page*/
   .footer {
      background-color: #098b54;

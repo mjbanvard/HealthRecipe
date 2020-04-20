@@ -37,7 +37,7 @@
 
  </div>
 
-<!--Remove ID: from line 42 before final deployment; is currently being used for referencing recipe IDs-->
+<!--Remove ID: from line 42 before final deployment; is currently being used for referencing recipes IDs-->
     <div class="grid-container" th:each="recipe : ${recipes}">
         <div class="item1">
             <p th:text="${recipe.name + ' | ID: ' + recipe.id}"></p>
@@ -53,8 +53,6 @@
             <p th:text="${recipe.steps}"></p>
         </div>
     </div>
-
-</div>
 
 </body>
 </html>

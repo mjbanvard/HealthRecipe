@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping(value = "list")
 public class RecipeController {
 
     @Autowired
@@ -33,7 +32,7 @@ public class RecipeController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public RecipeController () {
+    public RecipeController() {
 
         columnChoices.put("all", "All");
     }
@@ -45,53 +44,18 @@ public class RecipeController {
         return "list";
     }
 
-
-    @RequestMapping(value = "recipes")
-    public String listRecipeByChoice(Model model, @RequestParam String column,
-                                     @RequestParam ArrayList<String> value) {
-        Iterable<Recipe> recipes;
-        if (column.toLowerCase().equals("all")){
-            recipes = recipeRepository.findAll();
-            model.addAttribute("title", "All Recipes");
-        } else {
-            recipes = RecipeData.findByColumnAndValue(column, value, recipeRepository.findAll());
-            model.addAttribute("title", "Recipe Choice");
-        }
-        model.addAttribute("recipes", recipes);
-
-        return "list-recipes";
-    }
-
-    @GetMapping("add")
-    public String displayAddRecipeForm(Model model) {
-        model.addAttribute("title", "Add Recipe");
-        model.addAttribute(new Recipe());
-        return "add";
-    }
-
-    @PostMapping("add")
-    public String processAddRecipeForm(@ModelAttribute Recipe newRecipe,
-                                       Errors errors, Model model){
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Recipe");
-            return "add";
-        }
-
-        recipeRepository.save(newRecipe);
-        return "redirect:";
-    }
-
     @GetMapping("view/{recipeId}")
-    public String displayViewRecipe(Model model, @PathVariable int recipeId){
+    public String displayViewRecipe(Model model, @PathVariable int recipeId) {
+
         Optional optRecipe = recipeRepository.findById(recipeId);
         if (optRecipe.isPresent()) {
             Recipe recipe = (Recipe) optRecipe.get();
-            model.addAttribute("recipe", recipe);
+            model.addAttribute("recipes", recipe);
             return "view";
         } else {
             return "redirect:../";
         }
     }
 }
+
 
