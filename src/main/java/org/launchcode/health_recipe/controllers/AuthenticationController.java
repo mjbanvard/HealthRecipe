@@ -165,8 +165,10 @@ public class AuthenticationController {
         }
 
         setUserInSession(request.getSession(), theUser);
-
-        return "redirect:";
+        if (theUser.getAccess() == 1) {
+            return "redirect:/admin-home";
+        }
+        return "redirect:/list";
     }
 
     @GetMapping("/logout")

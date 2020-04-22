@@ -20,7 +20,7 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
-    @NotNull
+//    @NotNull
     private int access;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
