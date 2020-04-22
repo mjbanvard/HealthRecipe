@@ -13,25 +13,18 @@ import java.util.Set;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class Recipe {
+public class Recipe extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
+//    @Id
+//    @GeneratedValue
+//    private int id;
+//
+//    @NotNull
+//    @Size(max = 150)
+////    @OneToMany(mappedBy ="name")
+//    private String name;
 
-    @NotNull
-    @Size(max = 150)
-//    @OneToMany(mappedBy ="name")
-    private String name;
-
-    @OneToMany(mappedBy = "ingredient")
-    private Set<Ingredient> getIngredient;
-
-//    @OneToMany(orphanRemoval=true)
-//    @JoinColumn(name="ingredient") // join column is in table for Ingredient
-//    public Set<Ingredient> getIngredient() {return ingredient;}
-
-    @NotNull (message = "Servings?")
+        @NotNull (message = "Servings?")
     private String servings;
 
     @NotNull (message = "Serve time?")
@@ -43,9 +36,8 @@ public class Recipe {
 
     public Recipe() {}
 
-    public Recipe(int id, String name, String servings, String timeToServe, String stepsToRecipe) {
-        this.id = id;
-        this.name = name;
+    public Recipe(/*String name, */String servings, String timeToServe, String stepsToRecipe) {
+        super();
         this.servings = servings;
         this.serve_time = timeToServe;
         this.steps = stepsToRecipe;
@@ -61,7 +53,7 @@ public class Recipe {
         this.name = name;
     }
 
-    public int getId() { return id; }
+    public Integer getId() { return id; }
 
     public String getServings() {
         return servings;
@@ -86,6 +78,10 @@ public class Recipe {
     public void setSteps(String steps) {
         this.steps = steps;
     }
+
+    @OneToMany(mappedBy = "recipe")
+//    @JoinTable
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {

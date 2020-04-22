@@ -16,41 +16,39 @@ public abstract class AbstractEntity {
 
 //  Removed active name from AbstractEntity. Id is there for James' authentication controller. This class matches the
 //    request that James had for it's makeup.
-//
-//    @NotNull
-//    @Size(max = 150)
-//    protected String name;
+
+    @NotNull
+    @Size(max = 150)
+    protected String name;
 
     public Integer getId() {
         return id;
     }
 
-//    Because of removing name, then getters and setters can quiet down as well.
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return name;
-//    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractEntity that = (AbstractEntity) o;
-        return id == that.id;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name);
     }
-
 }

@@ -39,15 +39,16 @@ public class User extends AbstractEntity{
 
     public User(/*int id, */String name, String email, String username, String password, String access) {
 //        super.id = id;
-        super.setName( "name" );
+//        super.setName(name);
+        this.name = name;
         this.email = email;
         this.username = username;
         this.pwHash = encoder.encode(password);
         this.access = access;
     }
 
-    public int getId() {
-        return super.getId();
+    public Integer getId() {
+        return id;
     }
 
 //    public void setId(int id) {
