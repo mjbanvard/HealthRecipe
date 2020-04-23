@@ -8,16 +8,17 @@ import org.launchcode.health_recipe.models.User;
 import org.launchcode.health_recipe.models.data.IngredientRepository;
 import org.launchcode.health_recipe.models.data.RecipeRepository;
 import org.launchcode.health_recipe.models.data.UserRepository;
+import org.launchcode.health_recipe.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -110,5 +111,47 @@ public class AdminController {
         model.addAttribute("recipes", recipes);
 
         return "admin/search";
+    }
+
+    @GetMapping("/admin/add-admin_user")
+    public String displayAdminRegistrationForm(Model model) {
+        model.addAttribute(new RegisterFormDTO());
+        model.addAttribute("title", "Register");
+        return "admin/add-admin_user";
+    }
+
+    @PostMapping("/admin/add-admin_user")
+    public String processAdminRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
+                                               Errors errors, HttpServletRequest request,
+                                               Model model) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Register");
+            return "admin/add-admin_user";
+        }
+
+        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+
+        if (existingUser != null) {
+            errors.rejectValue("username", "username.alreadyexists",
+                    "A user with that username already exists");
+            model.addAttribute("title", "Register");
+            return "admin/add-admin_user";
+        }
+
+        String password = registerFormDTO.getPassword();
+        String verifyPassword = registerFormDTO.getVerifyPassword();
+        if (!password.equals(verifyPassword)) {
+            errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+            model.addAttribute("title", "Register");
+            return "admin/add-admin_user";
+        }
+
+        User newUser = new User(registerFormDTO.getName(), registerFormDTO.getEmail(), registerFormDTO.getUsername(),
+                registerFormDTO.getPassword(), registerFormDTO.getAccess());
+
+        newUser.setAccess(1);
+        userRepository.save(newUser);
+        return "redirect:/admin-home";
     }
 }
