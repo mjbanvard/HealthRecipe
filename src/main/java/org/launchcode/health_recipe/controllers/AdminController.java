@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,7 +68,7 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "recipes")
+    @RequestMapping(value = "admin/list/recipes")
     public String listRecipeByChoice(Model model, @RequestParam String column,
                                      @RequestParam ArrayList<String> value) {
         Iterable<Recipe> recipes;
@@ -81,5 +82,33 @@ public class AdminController {
         model.addAttribute("recipes", recipes);
 
         return "admin/list-recipes";
+    }
+
+    @RequestMapping("/admin/search")
+    public String search(Model model) {
+
+        return "admin/search";
+    }
+
+    @PostMapping("/admin/search/results")
+    public String displaySearchResults(Model model, @RequestParam ArrayList<String> searchTerms) {
+
+        Iterable<Recipe> recipes;
+        if (searchTerms.isEmpty() || searchTerms.contains("all".toLowerCase())) {
+            recipes = recipeRepository.findAll();
+        } else {
+            recipes = RecipeData.findByValue(searchTerms, recipeRepository.findAll());
+        }
+
+        model.addAttribute("title",
+                "Recipe Names Containing '"
+                        + searchTerms.toString()
+                        .replace("[", "")
+                        .replace("]", "")
+                        .toLowerCase()
+                        + "'");
+        model.addAttribute("recipes", recipes);
+
+        return "admin/search";
     }
 }
