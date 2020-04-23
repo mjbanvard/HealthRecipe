@@ -7,7 +7,33 @@
     <link th:href="@{/css/health_recipe.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:replace="fragments :: page-header1"></div>
+<div>
+    <section class="nav-scope">
+        <ul class="nav-section">
+            <li class="nav-logo">
+                <a th:href="@{/admin-home}" aria-label="Health Recipe">Health Recipe
+                </a>
+                <a th:href="@{/logout}">
+                    <button type="button" class="nav-btn btn-primary btn-lg" style="float:right;">LogOut</button>
+                </a>
+            </li>
+            <div class="nav-links">
+                <li class="nav-recipes">
+                    <a th:href="@{/admin/list}">Recipes</a>
+                </li>
+                <li class="nav-search">
+                    <a th:href="@{/admin/search}">Search</a>
+                </li>
+                <li class="nav-add-ingredient">
+                    <a th:href="@{/ingredient/add}">Add Ingredient</a>
+                </li>
+                <li class="nav-add-admin">
+                    <a th:href="@{/admin/add-admin_user}">Add Admin User</a>
+                </li>
+            </div>
+        </ul>
+    </section>
+</div>
 
 <h1>Add Recipe</h1>
 
