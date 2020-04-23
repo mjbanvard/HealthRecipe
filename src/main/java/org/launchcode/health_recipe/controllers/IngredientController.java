@@ -45,7 +45,7 @@ public class IngredientController {
 
         model.addAttribute("title", "Add Ingredient");
         ingredientRepository.save(newIngredient);
-        return "redirect:../";
+        return "redirect:../admin-home";
     }
 
     @GetMapping("view/{ingredientId}")
