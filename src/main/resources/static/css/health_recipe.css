@@ -416,37 +416,45 @@ a, li {
 }
 
 /*Registration Form*/
-.register-form {
-    margin: 0 auto;
-    width: 210px;
+.register-form form {
+    background-color: #067242;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-gap: 2em;
+    margin: auto;
+    max-width: 1270px;
+    padding-top: 1em;
+    font-family: Montserrat;
  }
 
 .register-form label {
-    display: inline-block;
+    grid-column: 1 / 2;
+    color: #f8d098;
     text-align: right;
-    float: left;
     font-size: 1.5em;
+    font-weight: bold;
 }
 
-.register-form input, textarea {
-    display: inline-block;
-    text-align: left;
-    float: right;
-    margin: 1em;
+.register-form input {
+    grid-column: 2 / 3;
     background-color: #f8d098;
-    height: 2em;
-    width: 80%;
     border: hidden;
+    width: 60%;
 }
 
 .register-form input[type=submit]  {
     background-color: #003e21;
      box-shadow: 0 5px #F8D098;
-     width: 60%;
-     padding: 1em;
+     width: 95px;
+     height: 25px;
      border-radius: .5em;
-     margin-left: 3px;
+     text-align: center;
      text-decoration: none;
+     margin-left: 185px;
+}
+
+.error p {
+    grid-columns: 2 / 3;
 }
 
 img {

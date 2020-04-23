@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container body-content">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8"/>
+    <link th:href="@{/css/health_recipe.css}" rel="stylesheet"/>
+
+    <title>Health Recipes</title>
+</head>
+
+<body>
 
 <div th:replace="fragments :: page-header"></div>
 
+<h2>REGISTER</h2>
+
 <div class="register-form">
+    <form method="post">
 
-    <h2>Registration</h2>
+        <label>Name</label>
+        <input class="register-control" th:field="${registerFormDTO.name}"/>
 
-        <form method="post">
+        <span class="error" th:errors="${registerFormDTO.name}"></span>
 
-            <label>Name</label>
-            <input class="register-control" th:field="${registerFormDTO.name}"/>
+        <label>Email</label>
+        <input class="register-control" th:field="${registerFormDTO.email}"/>
 
-            <p class="error" th:errors="${registerFormDTO.name}"></p>
+        <p class="error" th:errors="${registerFormDTO.email}"></p>
 
-            <label>Email</label>
-            <input class="register-control" th:field="${registerFormDTO.email}"/>
+        <label>Username</label>
+        <input class="register-control" th:field="${registerFormDTO.username}"/>
 
-            <p class="error" th:errors="${registerFormDTO.email}"></p>
+        <p class="error" th:errors="${registerFormDTO.username}"></p>
 
-            <label>Username</label>
-            <input class="register-control" th:field="${registerFormDTO.username}"/>
+        <label>Password</label>
+        <input class="register-control" th:field="${registerFormDTO.password}" type="password"/>
 
-            <p class="error" th:errors="${registerFormDTO.username}"></p>
+        <p class="error" th:errors="${registerFormDTO.password}"></p>
 
-            <label>Password</label>
-            <input class="register-control" th:field="${registerFormDTO.password}" type="password"/>
+        <label>Verify Password</label>
+        <input class="register-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
 
-            <p class="error" th:errors="${registerFormDTO.password}"></p>
-
-            <label>Verify Password</label>
-            <input class="register-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
-
-            <input type="submit" class="btn btn-primary" value="Register"/>
-        </form>
-
+        <input type="submit" class="btn btn-primary" value="Register"/>
+    </form>
 </div>
 
 </body>
