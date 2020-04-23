@@ -1,12 +1,8 @@
 package org.launchcode.health_recipe.models;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Ingredient extends AbstractEntity {
@@ -28,5 +24,12 @@ public class Ingredient extends AbstractEntity {
 
     public void setIngredient(String ingredient) {
         this.ingredient = ingredient;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "ingredient='" + ingredient + '\'' +
+                '}';
     }
 }
