@@ -28,8 +28,6 @@ public class Ingredient extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-                "ingredient='" + ingredient + '\'' +
-                '}';
+        return ingredient;
     }
 }

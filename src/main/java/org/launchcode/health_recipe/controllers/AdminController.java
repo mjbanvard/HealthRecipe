@@ -154,4 +154,25 @@ public class AdminController {
         userRepository.save(newUser);
         return "redirect:/admin-home";
     }
+
+//    @GetMapping("add_ingredient")
+//    public String displayAddIngredientForm(Model model) {
+//        model.addAttribute(new Ingredient());
+//        return "add_ingredient";
+//    }
+//
+//    @PostMapping("add_ingredient")
+//    public String processAddIngredientForm(@ModelAttribute @Valid Ingredient ingredient,
+//                                           Errors errors, Model model) {
+//
+//
+//        if (errors.hasErrors()) {
+//            return "add_ingredient";
+//        }
+//
+//        ingredientRepository.save(ingredient);
+//        return "redirect:/admin-home";
+//    }
+
+
 }
