@@ -8,39 +8,12 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-    <h2>Search Recipe Database</h2>
+    <h2>Recipe Search Results</h2>
 </div>
 
- <div>
-    <form th:action="@{/search/results}" method = "post">
-
-        <p>
-            <span th:each="column : ${columns}">
-                <input
-                        type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
-                <label th:for="${column.key}" th:text="${column.value}"></label>
-            </span>
-
-        </p>
-    </form>
-</div>
-
-<div class="search-container">
-
-        <label for="searchTerms">Keyword(s): <input type="text" name="searchTerms" id="searchTerms" /></label>
-
-        <input type="submit" value="Search" />
-
- </div>
-
-<!--Remove ID: from line 42 before final deployment; is currently being used for referencing recipes IDs-->
     <div class="grid-container" th:each="recipe : ${recipes}">
         <div class="item1">
-            <p th:text="${recipe.name + ' | ID: ' + recipe.id}"></p>
+            <p th:text="${recipe.name}"></p>
         </div>
         <div class="item2">Total Time
             <p th:text="${recipe.serve_time}"></p>
