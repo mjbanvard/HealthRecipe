@@ -32,9 +32,26 @@
     </section>
 </div>
 
-<div class="container body-content">
-    <h2>VIEW RECIPES</h2>
+<div id = "search-container">
+
+    <ul id = "searchParent">
+        <li>
+            <h2>View or Search Recipes</h2>
+        </li>
+
+        <li>
+            <form th:action="@{/search/results}" method = "post">
+
+        <li>
+            <input type="text" name="searchTerms" />
+
+            <input type="submit" value="Search" />
+        </li>
+        </form>
+        </li>
+    </ul>
 </div>
+
 
 <div class="list-container">
     <div class="list1">

@@ -5,26 +5,7 @@
 
 <body>
 
-<!--<th:block th:if="${theUserAccess = 1}"><div th:replace="fragments :: page-header2"></div> </th:block>-->
-<!--<div th:if="${theUserAccess = 1}" th:replace="fragments :: page-header2"></div>-->
-<!--<div th:if="${theUser.getAccess() == 1"} th:replace="fragments :: page-header2"></div>-->
-<!--<th:block th:if="${theUser.getAccess() != 1"}><div th:replace="fragments :: page-header"></div> </th:block>-->
 
-<!--<div th:unless="${theUser.getAccess() != 1}" th:replace="fragments :: page-header"></div>-->
-
-<!--<div th:replace="${#session.user.getAccess() ==1} ? ~{fragments :: page-header} : ~{fragments :: page-header2}"></div>-->
-<!--<div th:replace="${#bools.isTrue(theUser.getAccess = 1)} ? ~{fragments :: page-header} : ~{fragments :: page-header2}"></div>-->
-<!--<th:block th:switch-->
-<!--<th:block th:unless="${theUserAccess=1}>-->
-<!--    <div th:replace="fragments :: page-header2"></div>-->
-<!--</th:block>-->
-
-<!--<div th:if="${access.equals(1)}">-->
-<!--    <div th:replace="fragments :: page-header2"></div>-->
-<!--</div>-->
-<!--<th:block th:if="${request.getSession()} and ${access.equals(1)}">-->
-<!--<div th:replace="fragments :: page-header1"></div>-->
-<!--</th:block>-->
 <div th:replace="fragments :: page-header"></div>
 
 <div id = "search-container">
