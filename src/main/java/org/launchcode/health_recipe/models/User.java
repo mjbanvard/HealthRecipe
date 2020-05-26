@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 public class User extends AbstractEntity {
@@ -20,18 +21,19 @@ public class User extends AbstractEntity {
     @NotNull
     private String pwHash;
 
-    private String access;
+//    @NotNull
+    private int access;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {}
 
-    public User(String name, String email, String username, String password, String access) {
+    public User(String name, String email, String username, String password, int access) {
         super.setName(name);
         this.email = email;
         this.username = username;
         this.pwHash = encoder.encode(password);
-        this.access = access;
+        this.access =access;
     }
 
     public String getUsername() {
@@ -54,11 +56,12 @@ public class User extends AbstractEntity {
         return encoder.matches(password, pwHash);
     }
 
-    public String getAccess() {
+    public int getAccess() {
         return access;
     }
 
-    public void setAccess(String access) {
+    public void setAccess(int access) {
         this.access = access;
     }
+
 }
